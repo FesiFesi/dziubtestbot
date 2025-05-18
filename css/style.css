@@ -1,0 +1,4636 @@
+/* Główne style */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5f5;
+    touch-action: manipulation;
+    overflow: hidden;
+}
+
+#game-container {
+    position: relative;
+    max-width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    background-color: #f5f5f5;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Resource bar */
+#resource-bar {
+    background-color: #408cc7;
+    padding: 10px;
+    display: flex;
+    justify-content: space-around;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    align-items: center;
+}
+
+.resource {
+    display: flex;
+    align-items: center;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.resource-icon {
+    width: 44px;
+    height: 44px;
+    margin-right: 8px;
+}
+
+/* System poziomów */
+.level-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 120px;
+}
+
+.level-badge {
+    background-color: #673AB7;
+    color: white;
+    border-radius: 12px;
+    padding: 2px 8px;
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 4px;
+}
+
+.xp-bar {
+    width: 100%;
+    height: 6px;
+    background-color: #e0e0e0;
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.xp-progress {
+    height: 100%;
+    background-color: #FFD700;
+    width: 0%;
+    transition: width 0.3s ease;
+}
+
+.xp-text {
+    font-size: 10px;
+    color: #555;
+    margin-top: 2px;
+}
+
+
+
+.game-logo {
+    max-width: 60%; /* Zmniejszona szerokość z 80% na 50% */
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    margin-top: -22px; /* Mały odstęp od góry (resource bar) */
+    padding: 0; /* Usunięty padding */
+}
+
+
+
+
+/* Style dla informacji o poziomie na ekranie głównym */
+#main-level-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 200px;
+    margin: 15px auto;
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 15px;
+    padding: 10px 20px;
+    backdrop-filter: blur(5px);
+}
+
+.main-level-badge {
+    background-color: #673AB7;
+    color: white;
+    border-radius: 15px;
+    padding: 4px 15px;
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 6px;
+}
+
+.main-xp-bar {
+    width: 100%;
+    height: 8px;
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 4px;
+    overflow: hidden;
+    margin: 5px 0;
+}
+
+.main-xp-progress {
+    height: 100%;
+    background-color: #FFD700;
+    width: 0%;
+    transition: width 0.3s ease;
+}
+
+.main-xp-text {
+    font-size: 12px;
+    color: white;
+    margin-top: 2px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+
+
+
+/* Ekrany gry */
+#game-screens {
+    flex: 1;
+    position: relative;
+    overflow-y: auto;
+    padding-bottom: 70px; /* Zostawia miejsce na nawigację */
+}
+
+.game-screen {
+    display: none !important;
+    min-height: calc(100vh - 130px);
+    max-height: calc(100vh - 130px);
+    animation: fadeIn 0.3s;
+    padding: 15px;
+    
+    background-size: cover;
+
+    background-position: center;
+    background-repeat: no-repeat;
+    overflow-y: auto !important; /* Wymuszenie scrollowania w pionie */
+}
+
+.game-screen.active {
+    display: block !important;
+}
+
+
+
+
+
+
+
+/* Ekrany gry */
+#game-screens {
+    flex: 1;
+    position: relative;
+    overflow-y: auto;
+    padding-bottom: 70px; /* Zostawia miejsce na nawigację */
+}
+
+.game-screen {
+    display: none !important;
+    min-height: calc(100vh - 130px);
+    max-height: calc(100vh - 130px);
+    animation: fadeIn 0.3s;
+    padding: 15px;
+    
+    background-size: cover;
+
+    background-position: center;
+    background-repeat: no-repeat;
+    overflow-y: auto !important; /* Wymuszenie scrollowania w pionie */
+}
+
+
+
+
+
+
+
+
+
+
+
+/* Pasek nawigacji */
+#navigation-bar {
+    display: flex;
+    justify-content: space-evenly; /* Zmienione na space-evenly zamiast space-between */
+    background-color: #408cc7; /* NIEBIESKI TŁO PASKA */ 
+    padding: 5px 5px; /* Zmniejszony padding poziomy */
+    box-shadow: 0 -2px 5px rgba(0,0,0,0.1);
+    position: fixed;
+   
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    width: 100%; /* Upewnienie się, że pasek zajmuje całą szerokość */
+    box-sizing: border-box; /* Uwzględnienie padding w szerokości */
+}
+
+/* Ogólny styl przycisku */
+.nav-button {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    background-color: #408cc7; /* Bazowy niebieski */
+    border: none;
+    border-radius: 12px;
+    padding: 5px 5px; /* Zmniejszony padding poziomy */ 
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.1s;
+    margin: 0 2px; /* Zmniejszony margines */
+    position: relative;
+    white-space: nowrap; /* Zapobiega zawijaniu tekstu */
+    overflow: hidden; /* Ukrywa tekst, który nie mieści się */
+    text-overflow: ellipsis; /* Dodaje kropki, gdy tekst nie mieści się */
+    min-width: 0; /* Pozwala na prawidłowe kurczenie */
+}
+
+/* Efekty */
+.nav-button:hover {
+    transform: scale(1.03);
+}
+
+.nav-button:active {
+    transform: scale(0.97);
+}
+
+/* Styl przycisku aktywnego */
+.nav-button.active {
+    background-color: #f39c12;
+    color: #ffffff;
+    padding: 14px 5px; /* Ujednolicone paddingi */
+    margin: 0 2px; /* Ujednolicone marginesy */
+    border-radius: 10px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Czerwona kropka dla oznaczenia (np. nowe misje) */
+.nav-button .badge {
+    position: absolute;
+    top: 4px;
+    right: 6px;
+    width: 10px;
+    height: 10px;
+    background-color: red;
+    border-radius: 50%;
+    display: none;
+    z-index: 10;
+}
+
+
+
+
+/* RESPONSYWNOŚĆ */
+@media (max-width: 480px) {
+    #navigation-bar {
+        padding: 8px 3px; /* Jeszcze mniejszy padding dla małych ekranów */
+    }
+
+    .nav-button {
+        padding: 10px 3px;
+        font-size: 12px;
+        margin: 0 1px; /* Mniejszy margines */
+        border-radius: 8px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    
+    .nav-button.active {
+        padding: 10px 3px; /* Te same wymiary dla aktywnego przycisku */
+        margin: 0 1px;
+    }
+}
+
+@media (max-width: 360px) {
+    #navigation-bar {
+        padding: 8px 2px; /* Minimalny padding dla bardzo małych ekranów */
+    }
+    
+    .nav-button {
+        padding: 8px 2px;
+        font-size: 11px;
+        margin: 0;
+        letter-spacing: -0.5px; /* Zmniejsz odstępy między literami */
+    }
+    
+    .nav-button.active {
+        padding: 8px 2px;
+        margin: 0;
+    }
+}
+
+/* Dodatkowa reguła dla bardzo małych ekranów */
+@media (max-width: 320px) {
+    .nav-button {
+        font-size: 10px;
+        padding: 8px 1px;
+    }
+}
+
+
+
+
+
+
+
+/* Styl aktywnego przycisku w pasku nawigacji */
+.nav-button.active {
+    background-color: #f57c00;
+    color: #ffffff;
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.2);
+    font-weight: bold;
+    /* Usunięte wszelkie paddingi i marginesy, aby zapewnić spójność z innymi stylami */
+}
+
+
+
+
+
+
+
+
+
+
+/* Styl dla przycisku Wybrano na ekranie mapy */
+button.location-button.select-location-button.active,
+button.location-button:contains("Wybrano"),
+.location-button.active {
+    background-color: #f57c00 !important;
+    color: #ffffff !important;
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.2) !important;
+    font-weight: bold !important;
+}
+
+
+
+/* Delikatne pionowe kreski między przyciskami nawigacji */
+.nav-button:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    top: 10%;
+    right: 0;
+    height: 80%;
+    width: 1px;
+    background-color: rgba(255, 255, 255, 0.3); /* półprzezroczysta linia */
+}
+
+
+
+/* Style przycisków */
+button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 12px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    margin: 10px 0;
+    transition: background-color 0.2s, transform 0.1s;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+button:active {
+    transform: scale(0.98);
+}
+
+button:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+}
+
+/* Style dla ekranu ptaków */
+h2 {
+    color: #4CAF50;
+    margin-top: 0;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #e0e0e0;
+
+
+
+}
+
+#bird-slots {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    max-height: 75vh;
+    overflow-y: auto;
+    padding-right: 5px;
+}
+
+.bird-slot {
+    background-color: rgba(240, 240, 240, 0.7);
+    border-radius: 10px;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    position: relative;
+    margin-bottom: 15px;
+    min-height: 260px;
+    transition: background-color 0.3s ease;
+}
+
+.bird-slot.has-bird {
+    background-color: transparent; /* Przezroczyste tło dla slotów z ptakiem */
+}
+
+.bird-slot.locked {
+    background-color: rgba(230, 230, 230, 0.8); /* Lekko szare tło dla zablokowanych slotów */
+    border: 2px dashed #cccccc;
+    justify-content: center;
+}
+
+/* Ukryj elementy ptaka w zablokowanym slocie */
+.bird-slot.locked .bird-image,
+.bird-slot.locked .bird-timer,
+.bird-slot.locked .bird-buttons button {
+    display: none !important;
+}
+
+.lock-icon {
+    width: 40px;
+    height: 40px;
+    background-color: #cccccc;
+    border-radius: 50%;
+    margin-bottom: 10px;
+    position: relative;
+}
+
+.lock-icon:before {
+    content: "\1F512";
+    font-size: 20px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.bird-image {
+    width: 140px;
+    height: 140px;
+    border-radius: 20px;
+    margin: 10px auto;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 48px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    overflow: hidden;
+    min-height: 140px;
+    min-width: 140px;
+    flex-shrink: 0;
+}
+
+/* NAPRAWIONE STYLE DLA TIMERA */
+.bird-timer {
+    font-size: 19px;
+    margin: 5px 0;
+    min-height: 20px;
+    width: 100%;
+    text-align: center;
+}
+
+/* NAPRAWIONE STYLE DLA PRZYCISKÓW */
+.bird-buttons {
+    display: flex;
+    gap: 4px;
+    width: 100%;
+    margin-top: 3px;
+    padding: -20px -30px;
+    justify-content: center;
+}
+
+
+.bird-buttons button {
+    padding: 12px 29px;        /* rozmiar przycisku */
+    font-size: 14px;           /* wielkość tekstu */
+    border: none;              /* bez ramki */
+    border-radius: 11px;        /* zaokrąglenie rogów */
+    color: white;              /* kolor tekstu */
+    cursor: pointer;           /* wskaźnik ręki */
+
+    display: block;            /* umożliwia centrowanie marginem */
+    margin: 2px auto;         /* auto centrowanie + odstęp */
+    width: fit-content;        /* tylko szerokość potrzebna do zawartości */
+}
+
+/* Gdy slot jest odblokowany, ale nie ma ptaka - style dla pustego slotu */
+.bird-slot:not(.locked):not(.has-bird) .bird-timer {
+    color: #999;
+    font-style: italic;
+}
+
+.feed-button {
+    background-color: #4CAF50;
+}
+
+.scare-button {
+    background-color: #F44336;
+}
+
+
+
+.collect-reward-button {
+    background-color: #4CAF50;
+    animation: pulse 1.5s infinite;
+
+    padding: 1px 1px;        /* rozmiar przycisku */
+    font-size: 16px;           /* wielkość tekstu */
+    border: none;              /* bez ramki */
+    border-radius: 8px;        /* zaokrąglenie rogów */
+    color: white;              /* kolor tekstu */
+    cursor: pointer;           /* wskaźnik ręki */
+
+    display: block;            /* umożliwia centrowanie marginem */
+    margin: 20px auto;         /* auto centrowanie + odstęp */
+    width: fit-content;        /* tylko szerokość potrzebna do zawartości */
+}
+
+
+
+/* Dodatkowe style dla stanu karmienia */
+.bird-slot.has-bird .bird-image {
+    margin-top: 20px; /* Dodatkowy margines z góry dla lepszego wycentrowania */
+}
+
+/* Zapewnienie stałego miejsca dla elementów w slocie */
+.bird-slot.has-bird {
+    position: relative;
+    padding-bottom: 20px; /* Dodatkowe miejsce na dole dla przycisków */
+}
+
+
+/* Style dla różnych typów ptaków */
+.common-bird {
+    background-image: url('./assets/images/common-bird.png');
+    background-color: rgba(79, 235, 87, 0.3);
+    animation: bobbing 2s ease-in-out infinite;
+}
+
+
+
+.rare-bird {
+    background-image: url('./assets/images/rare-bird.png');
+    background-color: rgba(101, 35, 235, 0.3);
+    animation: bobbing 1.5s ease-in-out infinite;
+}
+
+.epic-bird {
+    background-image: url('./assets/images/epic-bird.png');
+    background-color: rgba(255, 217, 0, 0.319);
+    box-shadow: 0 0 15px #ffd90048;
+    animation: bobbing 1s ease-in-out infinite, shimmer 2s infinite;
+}
+
+.legendary-bird {
+    background-image: url('./assets/images/legendary-bird.png');
+    background-color: rgba(148, 0, 211, 0.3);
+    box-shadow: 0 0 20px #9400d382;
+    animation: bobbing 1s ease-in-out infinite, shimmer 2s infinite;
+}
+
+.mythical-bird {
+    background-image: url('./assets/images/mythical-bird.png');
+    background-color: rgba(211, 0, 0, 0.563);
+    box-shadow: 0 0 20px #d406068c;
+    animation: bobbing 1s ease-in-out infinite, shimmer 2s infinite;
+}
+
+
+
+
+/* Style dla różnych typów ptaków - Brzeg Jeziora */
+.lake-common, .bird-image.lake-common {
+    background-image: url('./assets/images/lake-common.png');
+    background-color: rgba(81, 244, 90, 0.3);
+    animation: bobbing 2s ease-in-out infinite;
+  }
+  
+  .lake-rare, .bird-image.lake-rare {
+    background-image: url('./assets/images/lake-rare.png');
+    background-color: rgba(64, 137, 234, 0.3);
+    animation: bobbing 1.5s ease-in-out infinite;
+  }
+  
+  .lake-epic, .bird-image.lake-epic {
+    background-image: url('./assets/images/lake-epic.png');
+    background-color: rgba(246, 220, 78, 0.319);
+    box-shadow: 0 0 15px #ffd90048;
+    animation: bobbing 1s ease-in-out infinite, shimmer 2s infinite;
+  }
+  
+  .lake-legendary, .bird-image.lake-legendary {
+    background-image: url('./assets/images/lake-legendary.png');
+    background-color: rgba(145, 18, 199, 0.314);
+    box-shadow: 0 0 20px #9400d382;
+    animation: bobbing 1s ease-in-out infinite, shimmer 2s infinite;
+  }
+  
+  .lake-mythical, .bird-image.lake-mythical {
+    background-image: url('./assets/images/lake-mythical.png');
+    background-color: rgba(211, 0, 0, 0.563);
+    box-shadow: 0 0 20px #d406068c;
+    animation: bobbing 1s ease-in-out infinite, shimmer 2s infinite;
+  }
+
+
+
+
+
+/* Style dla różnych typów ptaków - Tajemniczy Las */
+.forest-common {
+    background-image: url('../assets/images/forest-common.png');
+    background-color: rgba(81, 244, 90, 0.3);
+    animation: bobbing 2s ease-in-out infinite;
+}
+
+.forest-rare {
+    background-image: url('../assets/images/forest-rare.png');
+    background-color: rgba(64, 137, 234, 0.3);
+    animation: bobbing 1.5s ease-in-out infinite;
+}
+
+.forest-epic {
+    background-image: url('../assets/images/forest-epic.png');
+    background-color: rgba(246, 220, 78, 0.319);
+    box-shadow: 0 0 15px #ffd90048;
+    animation: bobbing 1s ease-in-out infinite, shimmer 2s infinite;
+}
+
+.forest-legendary {
+    background-image: url('../assets/images/forest-legendary.png');
+    background-color: rgba(145, 18, 199, 0.314);
+    box-shadow: 0 0 20px #9400d382;
+    animation: bobbing 1s ease-in-out infinite, shimmer 2s infinite;
+}
+
+.forest-mythical {
+    background-image: url('../assets/images/forest-mythical.png');
+    background-color: rgba(211, 0, 0, 0.563);
+    box-shadow: 0 0 20px #d406068c;
+    animation: bobbing 1s ease-in-out infinite, shimmer 2s infinite;
+}
+
+
+/* Efekty animacji dla ptaków */
+@keyframes bobbing {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+    100% { transform: translateY(0); }
+}
+
+/* Efekt błysku dla epic bird */
+@keyframes shimmer {
+    0% { box-shadow: 0 0 5px #ffd700; }
+    50% { box-shadow: 0 0 15px #ffd700; }
+    100% { box-shadow: 0 0 5px #ffd700; }
+}
+
+
+
+/* Dodatkowe style dla trzeciego slotu gdy jest odblokowany */
+.bird-slot[data-slot="2"]:not(.locked) .lock-icon,
+.bird-slot[data-slot="2"]:not(.locked) .unlock-button,
+.bird-slot[data-slot="2"]:not(.locked) p:not(.bird-timer),
+.bird-slot[data-slot="3"]:not(.locked) .lock-icon,
+.bird-slot[data-slot="3"]:not(.locked) .unlock-button,
+.bird-slot[data-slot="3"]:not(.locked) p:not(.bird-timer),
+.bird-slot[data-slot="4"]:not(.locked) .lock-icon,
+.bird-slot[data-slot="4"]:not(.locked) .unlock-button,
+.bird-slot[data-slot="4"]:not(.locked) p:not(.bird-timer) {
+    display: none !important;
+}
+
+/* Przycisk odblokowania slotu */
+.unlock-button {
+    background-color: #2196F3;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 15px;
+    font-size: 14px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background-color 0.2s, transform 0.1s;
+}
+
+.unlock-button:hover {
+    background-color: #1976D2;
+}
+
+.unlock-button:active {
+    transform: scale(0.98);
+}
+
+/* Style dla ekranu misji i osiągnięć */
+#missions-screen, #achievements-screen {
+    padding: 15px !important;
+    overflow-y: auto !important;
+}
+
+.mission-item, .achievement-item {
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 15px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    transition: all 0.2s ease;
+    position: relative;
+    animation: fadeIn 0.3s ease-out;
+}
+
+.mission-item:hover, .achievement-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+.mission-title, .achievement-title {
+    font-weight: bold;
+    margin-bottom: 8px;
+    color: #333;
+    font-size: 16px;
+}
+
+.mission-progress, .achievement-progress {
+    height: 8px;
+    background-color: #e0e0e0;
+    border-radius: 4px;
+    margin: 8px 0;
+    overflow: hidden;
+    position: relative;
+}
+
+.mission-progress-bar, .achievement-progress-bar {
+    height: 100%;
+    background-color: #4CAF50;
+    width: 0%;
+    transition: width 0.3s ease;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.achievement-progress-bar {
+    background-color: #673AB7;
+}
+
+.mission-status, .achievement-status {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 4px;
+}
+
+.mission-reward, .achievement-reward {
+    font-size: 14px;
+    color: #4CAF50;
+    font-weight: bold;
+}
+
+.mission-complete, .achievement-complete {
+    background-color: #e8f5e9;
+    border-left: 5px solid #4CAF50;
+}
+
+.mission-completed, .achievement-completed {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: #4CAF50;
+    color: white;
+    padding: 3px 8px;
+    border-radius: 12px;
+    font-size: 12px;
+}
+
+.achievement-description {
+    color: #666;
+    margin-bottom: 8px;
+    font-size: 14px;
+    line-height: 1.4;
+}
+
+.achievement-complete {
+    background-color: #ede7f6;
+    border-left: 5px solid #673AB7;
+}
+
+.achievement-completed {
+    background-color: #673AB7;
+}
+
+/* Przycisk "Odbierz" dla ukończonych misji */
+.claim-reward-button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 5px 15px;
+    font-size: 14px;
+    cursor: pointer;
+    margin-top: 8px;
+    animation: pulse 1.5s infinite;
+}
+
+.claim-reward-button:hover {
+    background-color: #45a049;
+}
+
+/* Style dla odebranych misji */
+.mission-rewarded {
+    background-color: #f0f0f0;
+    border-left: 5px solid #aaaaaa;
+    opacity: 0.7;
+}
+
+.mission-rewarded .mission-title,
+.mission-rewarded .mission-status,
+.mission-rewarded .mission-reward {
+    color: #777777;
+}
+
+.mission-rewarded .mission-progress-bar {
+    background-color: #aaaaaa;
+}
+
+.mission-completed {
+    background-color: #aaaaaa;
+}
+
+/* Style dla misji bonusowej */
+.mission-bonus {
+    background-color: #f0f8ff; /* Delikatnie niebieskie tło */
+    border-left: 5px solid #4682b4; /* Niebieskie obramowanie */
+    box-shadow: 0 2px 8px rgba(70, 130, 180, 0.2); /* Delikatny cień */
+}
+
+.mission-bonus .mission-progress-bar {
+    background-color: #1e90ff; /* Ciemniejszy niebieski dla paska postępu */
+    background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
+    background-size: 40px 40px; /* Wzór paska */
+    animation: progress-bar-stripes 2s linear infinite;
+}
+
+.mission-bonus-badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: #4682b4;
+    color: white;
+    padding: 3px 8px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.mission-bonus .mission-reward {
+    color: #4682b4;
+    font-weight: bold;
+}
+
+/* Animacja paska postępu dla misji bonusowej */
+@keyframes progress-bar-stripes {
+    from { background-position: 40px 0; }
+    to { background-position: 0 0; }
+}
+
+/* Styl dla odebranej misji bonusowej */
+.mission-bonus.mission-rewarded {
+    background-color: #f0f0f0;
+    border-left: 5px solid #aaaaaa;
+    opacity: 0.7;
+}
+
+.mission-bonus.mission-rewarded .mission-progress-bar {
+    background-color: #aaaaaa;
+    animation: none;
+}
+
+.mission-bonus.mission-rewarded .mission-bonus-badge {
+    background-color: #aaaaaa;
+}
+
+/* Dodatkowe style dla kontenerów list */
+#missions-list, #achievements-list {
+    max-width: 100%;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+/* Poprawki dla pustych list */
+#missions-list:empty::before, #achievements-list:empty::before {
+    content: "Ładowanie...";
+    display: block;
+    text-align: center;
+    padding: 20px;
+    color: #999;
+    font-style: italic;
+}
+
+/* Ekran produkcji */
+#collect-button {
+    background-color: #4CAF50;
+    width: 50%;
+    font-size: 18px;
+    padding: 40px;
+    margin: 10px auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#collect-auto-button {
+    background: linear-gradient(to bottom, #FF9800, #f57c00); 
+    color: white;
+    border: none;
+    border-radius: 15px;
+    padding: 14px;
+    font-size: 16px;
+    font-weight: bold;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.1s, box-shadow 0.1s;
+    /* Dodaj te właściwości, aby zapobiec zaznaczaniu tekstu */
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    cursor: pointer;
+}
+
+#auto-collect {
+    margin: 15px 0;
+    padding: 10px;
+    background-color: #c6731a;
+    border-radius: 5px;
+    text-align: center;
+    font-size: 16px;
+}
+
+.upgrade-section {
+    margin-top: 20px;
+    border-top: 1px solid #e0e0e0;
+    padding-top: 15px;
+}
+
+.upgrade-item {
+    background-color: #adadad90;
+    border-radius: 8px;
+    padding: 12px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.upgrade-info {
+    flex: 1;
+}
+
+.upgrade-info h4 {
+    margin: 0 0 5px 0;
+    color: #333;
+}
+
+.upgrade-info p {
+    margin: 0;
+    font-size: 12px;
+    color: #000000;
+}
+
+.upgrade-button {
+    background-color: #2196F3;
+    padding: 8px 12px;
+    font-size: 14px;
+    white-space: nowrap;
+}
+
+/* Animacje */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/* Nowe style dla ekranu produkcji */
+#production-screen {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 15px 15px 80px 15px !important;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('assets/images/production-bg.jpg');
+    background-size: cover;
+    background-position: center;
+    min-height: calc(100vh - 130px);
+}
+
+.production-title {
+    color: #FFFFFF;
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    font-size: 24px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.production-container {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    justify-content: space-between;
+}
+
+.auto-collect-section {
+    background-color: rgba(255, 255, 255, 0.489);
+    border-radius: 15px;
+    padding: 15px;
+    margin-bottom: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.auto-collect-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.auto-collect-title {
+    font-size: 18px;
+    font-weight: bold;
+    color: #4CAF50;
+}
+
+.auto-collect-info {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+}
+
+.auto-collect-progress {
+    background-color: rgba(255, 255, 255, 0.489);
+    height: 10px;
+    border-radius: 5px;
+    overflow: hidden;
+    flex-grow: 1;
+}
+
+.auto-collect-bar {
+    height: 100%;
+    background-color: #4CAF50;
+    width: 0%; /* Będzie ustawiane przez JavaScript */
+    transition: width 0.3s ease;
+}
+
+.collect-buttons {
+    position: relative;
+    margin-top: auto; /* Przesuwa na dół */
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+
+
+
+
+
+
+/* Poprawione style dla dużego kwadratowego przycisku zbierania */
+#collect-button {
+    background: linear-gradient(to bottom right, #4CAF50, #2E7D32);
+    color: white;
+    border: none;
+    border-radius: 20px;
+    width: 380px;  /* Stała szerokość */
+    height: 180px; /* Stała wysokość - teraz kwadratowy */
+    font-size: 22px;
+    font-weight: bold;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.1s, box-shadow 0.1s;
+    position: relative;
+    overflow: hidden;
+    margin: 0 auto 20px auto; /* Wyśrodkowanie i dolny margines */
+    padding: 20px;
+}
+
+#collect-button:active {
+    transform: scale(0.95);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+#collect-button::after {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: rgba(255, 255, 255, 0.1);
+    transform: rotate(30deg);
+    transition: transform 0.3s;
+}
+
+#collect-button:active::after {
+    transform: rotate(30deg) translate(10%, 10%);
+}
+
+.seed-icon-large {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 10px;
+}
+
+/* Dla mniejszych ekranów zmniejszamy nieco przycisk */
+@media (max-width: 380px) {
+    #collect-button {
+        width: 160px;
+        height: 160px;
+        font-size: 20px;
+    }
+    
+    .seed-icon-large {
+        width: 25px;
+        height: 25px;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#collect-auto-button {
+    background: linear-gradient(to bottom, #FF9800, #f57c00); 
+    color: white;
+    border: none;
+    border-radius: 15px;
+    padding: 14px;
+    font-size: 16px;
+    font-weight: bold;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.1s, box-shadow 0.1s;
+}
+
+#collect-auto-button:active {
+    transform: scale(0.98);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.seed-icon {
+    width: 29px;
+    height: 29px;
+    margin-right: 8px;
+}
+
+/* Nowe style dla sekcji ulepszeń */
+.upgrade-section {
+    background-color: rgba(255, 255, 255, 0.85);
+    border-radius: 15px;
+    padding: 15px;
+    margin-bottom: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.upgrade-section h3 {
+    color: #333;
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-size: 18px;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 8px;
+}
+
+.upgrade-items {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+.upgrade-item {
+    background-color: rgba(242, 242, 242, 0.9);
+    border-radius: 12px;
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+}
+
+.upgrade-item:hover {
+    transform: translateY(-2px);
+}
+
+.upgrade-icon {
+    width: 40px;
+    height: 40px;
+    background-color: #f0f0f0;
+    border-radius: 50%;
+    margin-bottom: 8px;
+    align-self: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+}
+
+.upgrade-info {
+    text-align: center;
+    margin-bottom: 8px;
+}
+
+.upgrade-info h4 {
+    margin: 0 0 5px 0;
+    color: #333;
+    font-size: 14px;
+}
+
+.upgrade-info p {
+    margin: 0;
+    font-size: 12px;
+    color: #666;
+    height: 32px; /* Stała wysokość dla wyrównania */
+}
+
+.upgrade-button {
+    background: linear-gradient(to bottom, #2196F3, #1976D2);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 8px;
+    font-size: 12px;
+    transition: background 0.2s;
+    margin-top: auto;
+}
+
+.upgrade-button:hover {
+    background: linear-gradient(to bottom, #1E88E5, #1565C0);
+}
+
+.upgrade-button:disabled {
+    background: linear-gradient(to bottom, #B0BEC5, #90A4AE);
+}
+
+/* Animacja dla przycisków */
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.02); }
+    100% { transform: scale(1); }
+}
+
+.pulse-animation {
+    animation: pulse 1.5s infinite;
+}
+
+/* Animacja efektów ziarenek */
+.seed-effect {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #ffd90000;
+    font-weight: bold;
+    pointer-events: none;
+    animation: floatUp 1s forwards;
+}
+
+@keyframes floatUp {
+    0% { transform: translate(-50%, -50%); opacity: 1; }
+    100% { transform: translate(-50%, -150%); opacity: 0; }
+}
+
+/* Styl dla wyświetlania liczników z ikonami */
+.resource-counter {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    font-size: 16px;
+    color: #333;
+}
+
+.resource-icon {
+    width: 35px;
+    height: 35px;
+}
+
+
+
+
+
+
+/* Zwiększona przezroczystość sekcji */
+.auto-collect-section {
+    background-color: rgba(255, 255, 255, 0.489);
+    border-radius: 15px;
+    padding: 15px;
+    margin-bottom: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    backdrop-filter: blur(2px); /* Dodaje efekt rozmycia tła dla lepszej czytelności */
+    border: 1px solid rgba(255, 255, 255, 0.7); /* Subtelna biała ramka */
+}
+
+.upgrade-section {
+    background-color: rgba(255, 255, 255, 0.489);
+    border-radius: 15px;
+    padding: 15px;
+    margin-bottom: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    backdrop-filter: blur(2px); /* Dodaje efekt rozmycia tła dla lepszej czytelności */
+    border: 1px solid rgba(255, 255, 255, 0.7); /* Subtelna biała ramka */
+}
+
+/* Ciemniejszy kolor tekstu dla lepszej czytelności na przezroczystym tle */
+.auto-collect-title, .upgrade-section h3 {
+    color: #1a1a1a; /* Ciemniejszy tekst */
+    text-shadow: 0 0 2px rgba(255, 255, 255, 0.5); /* Subtelny cień tekstu */
+}
+
+/* Mocniejszy kolor dla tekstów statystyk */
+.resource-counter {
+    color: #1a1a1a;
+    font-weight: bold;
+}
+
+/* Mocniejsze tło dla elementów ulepszeń dla lepszego kontrastu */
+.upgrade-item {
+    background-color: rgba(242, 242, 242, 0.75);
+    border: 1px solid rgba(255, 255, 255, 0.8);
+}
+
+
+
+
+
+
+
+
+/* Popup powiadomienia */
+.notification {
+    position: fixed;
+    top: 60px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 20px;
+    z-index: 1000;
+    font-size: 16px;
+    font-weight: bold;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.notification.show {
+    opacity: 1;
+    animation: slideDown 0.3s, fadeOut 0.3s 2.7s;
+}
+
+@keyframes slideDown {
+    from { transform: translate(-50%, -20px); opacity: 0; }
+    to { transform: translate(-50%, 0); opacity: 1; }
+}
+
+@keyframes fadeOut {
+    from { opacity: 1; }
+    to { opacity: 0; }
+}
+
+/* Efekt nagrody */
+.reward-animation {
+    position: absolute;
+    font-size: 24px;
+    font-weight: bold;
+    color: #FFD700;
+    text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+    pointer-events: none;
+    z-index: 1000;
+    animation: floatUp 1.5s forwards;
+}
+
+@keyframes floatUp {
+    0% { transform: translateY(0); opacity: 0; }
+    20% { opacity: 1; }
+    100% { transform: translateY(-80px); opacity: 0; }
+}
+
+
+/* Specjalny efekt dla nagrody TON */
+.ton-reward-animation {
+    position: absolute;
+    font-size: 28px;
+    font-weight: bold;
+    color: #0088cc; /* Niebieski kolor charakterystyczny dla TON */
+    text-shadow: 0 0 8px rgba(0, 136, 204, 0.7);
+    pointer-events: none;
+    z-index: 1001; /* Wyższy z-index niż zwykła animacja */
+    animation: floatUp 2s forwards, glow 1s infinite alternate;
+}
+
+@keyframes glow {
+    from { text-shadow: 0 0 5px rgba(0, 136, 204, 0.7); }
+    to { text-shadow: 0 0 15px rgba(0, 136, 204, 0.9), 0 0 30px rgba(0, 136, 204, 0.5); }
+}
+
+
+
+/* Klasa dodatkowa do lepszej widoczności stanu slotu */
+.slot-unlocking {
+    animation: unlockingEffect 1s ease;
+}
+
+@keyframes unlockingEffect {
+    0% { transform: scale(0.95); opacity: 0.7; }
+    50% { transform: scale(1.05); opacity: 1; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+/* Dodaj płynne przewijanie */
+#feed-screen {
+    overflow-y: auto;
+    padding-bottom: 20px;
+}
+
+
+
+
+
+
+
+
+
+
+/* Nowe style dla ekranu misji */
+.missions-main-title {
+    color: white;
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 5px;
+    font-size: 28px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.missions-header {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.missions-info {
+    display: flex;
+    align-items: center;
+    background: linear-gradient(135deg, rgba(255, 179, 71, 0.8), rgba(255, 204, 92, 0.8));
+    padding: 12px 20px;
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(5px);
+    border: 2px solid rgba(255, 255, 255, 0.6);
+    width: fit-content;
+}
+
+.missions-icon {
+    font-size: 24px;
+    margin-right: 10px;
+}
+
+.missions-text {
+    color: #333;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+/* Kontenery misji */
+.missions-section {
+    max-width: 800px;
+    margin: 0 auto 20px;
+    border-radius: 18px;
+    padding: 20px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(5px);
+}
+
+.daily-missions-container {
+    background: linear-gradient(135deg, rgba(98, 184, 255, 0.31), rgba(137, 207, 255, 0.85));
+    border: 2px solid rgba(255, 255, 255, 0.5);
+}
+
+.weekly-missions-container {
+    background: linear-gradient(135deg, rgba(79, 139, 230, 0.31), rgba(107, 169, 250, 0.8));
+    border: 2px solid rgba(255, 255, 255, 0.5);
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.5);
+    flex-wrap: wrap;
+}
+
+.section-title-container {
+    display: flex;
+    align-items: center;
+}
+
+.section-icon {
+    font-size: 24px;
+    margin-right: 10px;
+    background: rgba(255, 255, 255, 0.7);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.section-title {
+    color: white;
+    margin: 0;
+    font-size: 20px;
+    font-weight: bold;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.reset-timer {
+    display: flex;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.3);
+    padding: 5px 10px;
+    border-radius: 12px;
+    font-size: 14px;
+    color: white;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
+    margin-top: 5px;
+}
+
+.timer-icon {
+    margin-right: 5px;
+}
+
+.missions-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    max-width: 100%;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+.missions-list:empty::before {
+    content: "Ładowanie misji...";
+    display: block;
+    text-align: center;
+    padding: 20px;
+    color: white;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 12px;
+    font-style: italic;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
+}
+
+/* Style elementów misji */
+.mission-item {
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 15px;
+    padding: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    position: relative;
+    animation: fadeIn 0.3s ease-out;
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    display: flex;
+    flex-direction: column;
+}
+
+.mission-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+}
+
+.mission-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 10px;
+}
+
+.mission-title {
+    font-weight: bold;
+    color: #333;
+    font-size: 17px;
+    margin: 0;
+    padding-right: 30px;
+}
+
+.mission-badge {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    padding: 3px 8px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: bold;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.mission-status {
+    font-size: 14px;
+    color: #666;
+    margin: 5px 0;
+}
+
+.mission-progress-container {
+    margin: 10px 0;
+}
+
+.mission-progress {
+    height: 10px;
+    background-color: rgba(224, 224, 224, 0.8);
+    border-radius: 5px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.mission-progress-bar {
+    height: 100%;
+    background: linear-gradient(to right, #4CAF50, #8BC34A);
+    border-radius: 5px;
+    width: 0%;
+    transition: width 0.5s ease;
+    position: absolute;
+    top: 0;
+    left: 0;
+    box-shadow: 0 0 6px rgba(76, 175, 80, 0.5);
+}
+
+.mission-reward-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.mission-reward {
+    display: flex;
+    align-items: center;
+    background: rgba(76, 175, 80, 0.1);
+    padding: 5px 10px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #4CAF50;
+}
+
+.reward-icon {
+    margin-right: 5px;
+    font-size: 16px;
+}
+
+.claim-reward-button {
+    background: linear-gradient(to right, #4CAF50, #8BC34A);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 6px 15px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+    animation: pulse 1.5s infinite;
+}
+
+.claim-reward-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    background: linear-gradient(to right, #43A047, #7CB342);
+}
+
+/* Style dla różnych stanów misji */
+.mission-complete {
+    background: linear-gradient(to right, rgba(255, 255, 255, 0.95), rgba(232, 245, 233, 0.95));
+    border-left: 5px solid #4CAF50;
+}
+
+.mission-complete .mission-badge {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.mission-rewarded {
+    background: rgba(240, 240, 240, 0.9);
+    border-left: 5px solid #9e9e9e;
+    opacity: 0.8;
+}
+
+.mission-rewarded .mission-title,
+.mission-rewarded .mission-status,
+.mission-rewarded .mission-reward {
+    color: #777;
+}
+
+.mission-rewarded .mission-badge {
+    background-color: #9e9e9e;
+    color: white;
+}
+
+.mission-rewarded .mission-progress-bar {
+    background: linear-gradient(to right, #9e9e9e, #bdbdbd);
+}
+
+/* Style dla misji bonusowej */
+.mission-bonus {
+    background: linear-gradient(to right, rgba(255, 255, 255, 0.95), rgba(232, 240, 254, 0.95));
+    border-left: 5px solid #2196F3;
+    box-shadow: 0 4px 12px rgba(33, 150, 243, 0.2);
+}
+
+.mission-bonus .mission-progress-bar {
+    background: linear-gradient(to right, #2196F3, #64B5F6);
+    background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
+    background-size: 40px 40px;
+    animation: progress-bar-stripes 2s linear infinite;
+}
+
+.mission-bonus .mission-badge {
+    background-color: #2196F3;
+    color: white;
+}
+
+.mission-bonus .mission-reward {
+    background-color: rgba(33, 150, 243, 0.1);
+    color: #2196F3;
+}
+
+/* Animacje */
+@keyframes progress-bar-stripes {
+    from { background-position: 40px 0; }
+    to { background-position: 0 0; }
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Oznaczenie misji do odebrania */
+.mission-item.claimable .claim-reward-button::after {
+    content: "";
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    width: 10px;
+    height: 10px;
+    background-color: #ff0000;
+    border-radius: 50%;
+    animation: pulse 1.5s infinite;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Style dla ikony katalogu ptaków */
+.bird-catalog-button {
+    position: fixed;
+    top: 70px;
+    right: 15px;
+    width: 50px;
+    height: 50px;
+    background-color: #7faff397;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    cursor: pointer;
+    z-index: 150;
+    transition: transform 0.2s, background-color 0.2s;
+}
+
+.bird-catalog-button:hover {
+    transform: scale(1.1);
+    background-color: #5fa1b0e0;
+}
+
+.bird-catalog-button img.catalog-icon {
+    width: 64px;
+    height: 64px;
+    object-fit: contain;
+}
+
+
+
+/* Dodatkowe style dla lokacji w katalogu ptaków */
+#catalog-locations-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.catalog-location {
+    border-radius: 8px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.catalog-location:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.location-header {
+    background-color: rgba(76, 175, 80, 0.2);
+    padding: 10px 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.location-name {
+    font-weight: bold;
+    font-size: 18px;
+    color: #4CAF50;
+}
+
+.location-status {
+    background-color: #4CAF50;
+    color: white;
+    padding: 3px 8px;
+    border-radius: 12px;
+    font-size: 12px;
+}
+
+.location-locked .location-status {
+    background-color: #999;
+}
+
+.location-lock-info {
+    padding: 20px;
+    text-align: center;
+    color: #666;
+    font-style: italic;
+}
+
+
+
+/* Bardziej specyficzny selektor */
+#feed-screen .map-button,
+#feed-screen .bird-catalog-button {
+    right: 15px !important; /* Użycie !important aby nadpisać inne style */
+}
+
+/* Dostosowanie pozycji dla każdego przycisku osobno */
+#feed-screen .bird-catalog-button {
+    top: 140px !important;
+}
+
+#feed-screen .map-button {
+    top: 75px !important;
+}
+
+
+
+
+/* Style dla informacji o lokacji */
+#current-location-info {
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+#current-location-name {
+    color: #49069f;
+    margin-top: -5px;
+    font-size: 23px;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+}
+
+
+
+
+
+
+/* Style dla ikony mapy */
+.map-button {
+    position: fixed;
+    top: 170px;
+    right: 15px;
+    width: 150px;
+    height: 150px;
+    background-color: #7faff300;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0);
+    cursor: pointer;
+    z-index: 150;
+    transition: transform 0.2s, background-color 0.2s;
+}
+
+.map-button:hover {
+    transform: scale(1.1);
+    background-color: #5fa1b000;
+}
+
+.map-button img.map-icon {
+    width: 64px;
+    height: 64px;
+    object-fit: contain;
+}
+
+/* Style dla ikony sklepu */
+.shop-button {
+    position: fixed;
+    top: 310px;
+    right: 125px;
+    width: 50px;
+    height: 50px;
+    background-color: #7faff397;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    cursor: pointer;
+    z-index: 150;
+    transition: transform 0.2s, background-color 0.2s;
+}
+
+.shop-button:hover {
+    transform: scale(1.1);
+    background-color: #5fa1b0e0;
+}
+
+.shop-button img.shop-icon {
+    width: 66px;
+    height: 66px;
+    object-fit: contain;
+}
+
+
+
+/* Style dla elementów mapy lokacji */
+.location-item {
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 15px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    position: relative;
+    width: calc(50% - 10px);
+    display: inline-block;
+    vertical-align: top;
+    box-sizing: border-box;
+}
+
+/* Kontener dla lokacji w układzie poziomym */
+.locations-row {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.locations-row .location-item {
+    flex: 1;
+    min-width: 230px;
+    margin-bottom: 0;
+}
+
+/* Responsywność dla małych ekranów */
+@media (max-width: 600px) {
+    .locations-row {
+        flex-direction: column;
+    }
+    
+    .locations-row .location-item {
+        width: 100%;
+        margin-bottom: 15px;
+    }
+}
+
+
+.location-item.locked {
+    background-color: rgba(230, 230, 230, 0.8);
+    border: 2px dashed #cccccc;
+}
+
+.location-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.location-name {
+    font-size: 18px;
+    font-weight: bold;
+    color: #4CAF50;
+}
+
+.location-item.locked .location-name {
+    color: #999;
+}
+
+.location-status {
+    font-size: 12px;
+    background-color: #4CAF50;
+    color: white;
+    padding: 3px 8px;
+    border-radius: 12px;
+}
+
+.location-item.locked .location-status {
+    background-color: #999;
+}
+
+.location-description {
+    color: #666;
+    margin-bottom: 15px;
+    font-size: 14px;
+}
+
+.location-button {
+    background-color: #888787; /* Szary kolor tła zamiast przezroczystego */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 15px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    display: block; /* Upewniamy się, że przycisk jest widoczny jako blok */
+    margin-top: 10px; /* Dodajemy odstęp od góry */
+}
+
+.location-button:hover {
+    background-color: #616161; /* Ciemniejszy szary dla efektu hover */
+}
+
+.location-button.active {
+    background-color: #f57c00 !important;
+    color: #ffffff !important;
+}
+
+.location-button.unlock-location-button {
+    background-color: #4caf50;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.location-button.unlock-location-button:hover {
+    background-color: #76736e;
+}
+
+.lock-icon {
+    font-style: normal;
+}
+
+
+
+#bird-catalog-screen {
+    padding: 15px !important;
+    overflow-y: auto !important;
+}
+
+#bird-catalog-screen h2,
+#map-screen h2 {
+    text-align: center;
+    color: #4CAF50;
+    margin-bottom: 20px;
+}
+
+.catalog-container {
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.catalog-header {
+    text-align: center;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #ddd;
+}
+
+.catalog-title {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #333;
+}
+
+/* Lokacje w katalogu */
+.catalog-location {
+    margin-bottom: 30px;
+    padding: 15px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    position: relative;
+}
+
+/* Style dla różnych lokacji */
+.catalog-location[data-location="park"] .location-name {
+    color: #2e7d32; /* ciemny zielony */
+}
+
+.catalog-location[data-location="park"] {
+    border-left: 5px solid #2e7d32;
+}
+
+.catalog-location[data-location="lake"] .location-name {
+    color: #0277bd; /* niebieski */
+}
+
+.catalog-location[data-location="lake"] {
+    border-left: 5px solid #0277bd;
+}
+
+.catalog-location[id="forest-catalog"] .location-name {
+    color: #33691E; /* ciemny zielony las */
+}
+
+.catalog-location[id="forest-catalog"] {
+    border-left: 5px solid #33691E;
+}
+
+.location-locked {
+    opacity: 0.7;
+    background-color: #f0f0f0;
+}
+
+.location-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #ddd;
+}
+
+.location-name {
+    font-size: 1.3em;
+    font-weight: bold;
+    color: #0066cc;
+}
+
+.location-status {
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-weight: bold;
+}
+
+.location-locked .location-status {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
+.catalog-location:not(.location-locked) .location-status {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.location-lock-info {
+    text-align: center;
+    padding: 20px;
+    color: #721c24;
+    font-style: italic;
+}
+
+/* Siatka ptaków */
+.bird-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 15px;
+    margin-top: 15px;
+}
+
+/* Pojedynczy element ptaka */
+.catalog-bird-item {
+    padding: 10px;
+    border-radius: 8px;
+    background-color: rgb(170, 170, 170);
+    border: 1px solid #ddd;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+}
+
+.catalog-bird-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+
+
+
+/* Style dla nieodkrytych ptaków */
+.bird-undiscovered .catalog-bird-image {
+    filter: grayscale(100%);
+    opacity: 0.5;
+}
+
+.bird-undiscovered .catalog-bird-name:after {
+    content: " (nieodkryty)";
+    font-weight: normal;
+    font-style: italic;
+    color: #999;
+}
+
+
+
+
+.catalog-bird-image {
+    height: 100px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    margin-bottom: 10px;
+}
+
+.catalog-bird-name {
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.catalog-bird-stats {
+    font-size: 0.9em;
+    color: #666;
+}
+
+.catalog-bird-stat {
+    margin-bottom: 5px;
+    padding-left: 5px;
+    border-left: 2px solid #ddd;
+}
+
+/* Komunikaty błędów */
+.catalog-error {
+    color: #721c24;
+    background-color: #f8d7da;
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center;
+    grid-column: 1 / -1;
+}
+
+
+
+
+
+/* Style dla zablokowanych lokacji */
+.location-locked {
+    background-color: #f0f0f0;
+    position: relative;
+    opacity: 0.7;
+}
+
+.location-locked:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.05);
+    z-index: 1;
+}
+
+.location-lock-info {
+    text-align: center;
+    padding: 15px;
+    color: #666;
+    font-style: italic;
+}
+
+/* Przycisk powrotu */
+.back-button {
+    background-color: #408cc7;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 8px 15px;
+    font-size: 14px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    /* Nowe style dla przypięcia przycisku */
+    position: fixed;
+    top: 15px;
+    left: 15px; /* Zmienione z right na left */
+    z-index: 200; /* Wysoki z-index, aby przycisk był nad innymi elementami */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.3); /* Dodatkowy cień dla lepszej widoczności */
+}
+
+.back-button:hover {
+    background-color: #408cc7;
+}
+.back-button:hover {
+    background-color: #5E35B1;
+}
+
+.back-button:hover {
+    background-color: #5E35B1;
+}
+
+
+
+
+/* Style dla ikony mapy */
+.map-button {
+    position: fixed;
+    top: 80px;
+    right: 15px;
+    width: 50px;
+    height: 50px;
+    background-color: #7faff300;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0);
+    cursor: pointer;
+    z-index: 150;
+    transition: transform 0.2s, background-color 0.2s;
+}
+
+.map-button:hover {
+    transform: scale(1.1);
+    background-color: #5fa1b000;
+}
+
+.map-button img.map-icon {
+    width: 47px;
+    height: 47px;
+    object-fit: contain;
+}
+
+
+/* Style dla ekranu portfela */
+#wallet-content {
+    background-color: rgba(255, 255, 255, 0.64);
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    color: #666;
+    font-style: italic;
+}
+/* Dodatkowe style dla misji tygodniowych */
+.mission-description {
+    font-size: 12px;
+    color: #666;
+    margin-bottom: 8px;
+    font-style: italic;
+}
+
+.weekly-mission-item {
+    background-color: rgba(235, 245, 255, 0.7);
+    border-left: 4px solid #4682b4;
+}
+
+.weekly-mission-item .mission-title {
+    color: #1a5a96;
+}
+
+.weekly-mission-item .mission-progress-bar {
+    background-color: #4682b4;
+}
+
+.weekly-mission-item.mission-complete {
+    background-color: #e8f5f9;
+    border-left: 5px solid #4682b4;
+}
+
+.weekly-mission-item.mission-rewarded {
+    background-color: #f0f0f0;
+    border-left: 5px solid #aaaaaa;
+    opacity: 0.7;
+}
+
+/* Style dla timera resetu */
+.reset-timer {
+    font-size: 12px;
+    color: #666;
+    margin-bottom: 12px;
+    text-align: right;
+    font-style: italic;
+}
+
+/* Style dla ekranu portfela */
+#wallet-screen {
+    padding: 15px !important;
+    overflow-y: auto !important;
+}
+
+.wallet-container {
+    max-width: 100%;
+    margin-bottom: 20px;
+}
+
+.wallet-balance {
+    background-color: rgba(255, 255, 255, 0.747);
+    border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 20px;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.wallet-balance h3 {
+    margin-top: 0;
+    color: #333;
+    font-size: 18px;
+}
+
+.balance-amount {
+    font-size: 24px;
+    font-weight: bold;
+    color: #4CAF50;
+    margin: 15px 0;
+}
+
+.withdraw-button {
+    background-color: #2196F3;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.withdraw-button:hover {
+    background-color: #1976D2;
+}
+
+
+.ton-header {
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 0px;
+    color: #333;
+    font-size: 18px;
+
+  }
+  
+
+  .ton-info-box {
+    display: flex;
+    flex-direction: row; /* czyli poziomo */
+    align-items: stretch;
+    justify-content: center;
+    width: 100%;
+    margin-top: 5px; /* odstęp od nagłówka */
+}
+
+
+.ton-info-section {
+    display: flex;
+    flex-direction: column; /* NOWOŚĆ – kolumna zamiast rzędu */
+    align-items: center;
+   
+    border-radius: 10px;
+    padding: 20px;
+    background-color: #fdfdfdbd;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
+  
+  .ton-info-left,
+  .ton-info-right {
+    flex: 1;
+    padding: 20px;
+    font-family: 'Segoe UI', sans-serif;
+  }
+  
+  .ton-info-left h4,
+  .ton-info-right h4 {
+    font-size: 1.2em;
+    margin-top: -15;   
+    margin-bottom: 10px;
+    color: #007b83;
+  }
+  
+  .ton-info-left p,
+  .ton-info-right p {
+    font-size: 0.8em;
+    line-height: 1.6;
+    color: #333;
+  }
+  
+  .vertical-divider {
+    width: 2px;
+    background-color: #6c6a6aae;
+    margin-top: 25px;   
+    margin-bottom: 15px;
+  }
+  
+.conversion-section {
+    background-color: #fdfdfdbd;
+    border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.conversion-section h3 {
+    margin-top: 0;
+    color: #333;
+    font-size: 18px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 8px;
+}
+
+.conversion-row {
+    display: flex;
+    align-items: center;
+    margin: 15px 0;
+}
+
+.conversion-input {
+    flex: 1;
+    display: flex;
+    align-items: center;
+}
+
+.conversion-input input {
+    max-width: 125px;
+}
+
+.conversion-input img {
+    width: 32px;
+    height: 32px;
+    margin-left: 5px;
+}
+
+.conversion-arrow {
+    margin: 0 15px;
+    color: #666;
+    font-size: 20px;
+}
+
+.conversion-result {
+    flex: 1;
+    display: flex;
+    align-items: center;
+}
+
+.conversion-result span {
+    font-weight: bold;
+    font-size: 16px;
+    margin-right: 10px;
+}
+
+.conversion-result .fruit-icon {
+    width: 24px;
+    height: 24px;
+    background-color: #ff9800;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    color: white;
+}
+
+.ads-section, .friends-section {
+    background-color: #fdfdfdbd;
+    border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.ads-section h3, .friends-section h3 {
+    margin-top: 0;
+    color: #333;
+    font-size: 18px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 8px;
+}
+
+.ads-section button {
+    background-color: #673AB7;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    margin-top: 10px;
+}
+
+.ads-section button:hover {
+    background-color: #5E35B1;
+}
+
+.ads-section p, .friends-section p {
+    color: #666;
+    font-style: italic;
+    margin: 10px 0;
+}
+
+.placeholder-text {
+    color: #999;
+    font-style: italic;
+    text-align: center;
+    padding: 10px;
+}
+/* Style dla ikony owocu w resource bar */
+.fruit-icon.resource-icon {
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #ffffff00;
+    border-radius: 50%;
+    color: white;
+    font-size: 14px;
+    margin-right: 8px;
+  }
+
+  .fruit-icon img {
+    width: 37px;
+    height: 37px;
+  }
+  
+  
+/* Style dla przycisków konwersji */
+.convert-button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 8px 12px;
+    margin-left: 10px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+  }
+  
+  .convert-button:hover {
+    background-color: #45a049;
+  }
+  
+  /* Modyfikacja układu wiersza konwersji */
+  .conversion-row {
+    display: flex;
+    align-items: center;
+    margin: 15px 0;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  
+  .conversion-input, .conversion-result {
+    display: flex;
+    align-items: center;
+    margin-right: 10px;
+  }
+  
+  .conversion-arrow {
+    margin: 0 10px;
+  }
+  
+  /* Style dla wskaźnika przelicznika */
+  .conversion-rate {
+    display: flex;
+    align-items: center;
+    background-color: rgba(240, 240, 240, 0.6);
+    padding: 5px 10px;
+    border-radius: 15px;
+    margin: 0 10px;
+  }
+  
+  .rate-icon {
+    font-weight: bold;
+    font-size: 14px;
+    margin: 0 2px;
+    color: #333;
+  }
+  
+  .conversion-rate .fruit-icon {
+    margin: 0 2px;
+  }
+  
+  .conversion-rate .conversion-arrow {
+    margin: 0 5px;
+    color: #666;
+  }
+  
+  /* Poprawki dla układu wierszy konwersji */
+  .conversion-row {
+    display: flex;
+    align-items: center;
+    margin: 20px 0;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  
+  @media (max-width: 600px) {
+    .conversion-row {
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    .conversion-rate {
+      margin: 10px 0;
+    }
+    
+    .conversion-input, .conversion-result {
+      width: 100%;
+      justify-content: center;
+    }
+  }
+
+  /* Styl dla podświetlonego przycisku konwersji */
+  
+.convert-button.highlight {
+    background-color: #45a049;
+    box-shadow: 0 0 5px rgba(69, 160, 73, 0.5);
+    transform: scale(1.05);
+  }
+  
+  .convert-button:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+  }
+
+  
+
+
+
+
+
+
+
+
+/* Animacje dla ptaków */
+@keyframes eggWiggle {
+    0%, 100% { transform: rotate(0deg); }
+    25% { transform: rotate(5deg); }
+    75% { transform: rotate(-5deg); }
+}
+
+@keyframes birdBob {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+@keyframes birdFly {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    25% { transform: translateY(-5px) rotate(2deg); }
+    50% { transform: translateY(-10px) rotate(0deg); }
+    75% { transform: translateY(-5px) rotate(-2deg); }
+}
+
+
+/* Style dla wyświetlania salda z ikoną */
+.balance-display {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 15px 0;
+}
+
+.currency-icon {
+    width: 34px;
+    height: 34px;
+    margin-right: 10px;
+}
+
+.balance-amount {
+    font-size: 24px;
+    font-weight: bold;
+    color: #4CAF50;
+}
+
+/* Style dla wskaźnika przelicznika */
+.conversion-rate {
+    display: flex;
+    align-items: center;
+    background-color: rgba(240, 240, 240, 0.6);
+    padding: 5px 10px;
+    border-radius: 15px;
+    margin: 0 10px;
+  }
+  
+  .rate-icon {
+    font-weight: bold;
+    font-size: 14px;
+    margin: 0 2px;
+    color: #333;
+  }
+  
+  .conversion-rate .fruit-icon {
+    margin: 0 2px;
+  }
+  
+  .conversion-rate .conversion-arrow {
+    margin: 0 5px;
+    color: #666;
+  }
+  
+  /* Poprawki dla układu wierszy konwersji */
+  .conversion-row {
+    display: flex;
+    align-items: center;
+    margin: 20px 0;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  
+  @media (max-width: 600px) {
+    .conversion-row {
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    .conversion-rate {
+      margin: 10px 0;
+    }
+    
+    .conversion-input, .conversion-result {
+      width: 100%;
+      justify-content: center;
+    }
+  }
+
+
+ 
+
+
+/* Efekty przejścia między lokacjami */
+.location-transition {
+    animation: locationFade 0.6s;
+}
+
+@keyframes locationFade {
+    0% { opacity: 1; }
+    50% { opacity: 0.5; }
+    100% { opacity: 1; }
+}
+
+/* Podświetlenie nazwy lokacji */
+.location-name-highlight {
+    animation: nameHighlight 2s;
+}
+
+@keyframes nameHighlight {
+    0% { transform: scale(1); color: #FF9800; }
+    50% { transform: scale(1.1); color: #FF5722; }
+    100% { transform: scale(1); color: #FF9800; }
+}
+
+/* Animacja odblokowania lokacji */
+.location-unlocking {
+    animation: unlockPulse 1s;
+}
+
+@keyframes unlockPulse {
+    0% { transform: scale(1); box-shadow: 0 0 0 rgba(76, 175, 80, 0); }
+    50% { transform: scale(1.05); box-shadow: 0 0 20px rgba(76, 175, 80, 0.8); }
+    100% { transform: scale(1); box-shadow: 0 0 5px rgba(76, 175, 80, 0.5); }
+}
+
+/* Style dla podświetlenia wybranej lokacji */
+.selected-location {
+    border: 3px solid #4CAF50 !important;
+    box-shadow: 0 0 10px rgba(76, 175, 80, 0.5) !important;
+}
+
+.location-birds-info {
+    display: none !important;
+}
+
+
+
+/* Ulepszone style dla ekranu mapy i katalogu ptaków */
+
+/* Style dla kontenerów na ekranie mapy */
+/* USUNIĘTE - używamy teraz jednolitych stylów */
+  
+  /* Style dla elementów lokacji na mapie */
+  .location-item {
+    background-color: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(3px);
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  
+  .location-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+  }
+  
+  .location-item.locked {
+    background-color: rgba(240, 240, 240, 0.6);
+    border: 1px dashed rgba(200, 200, 200, 0.8);
+  }
+  
+  /* Style dla lokacji w katalogu ptaków */
+  .catalog-location {
+    background-color: rgba(249, 249, 249, 0.7);
+    backdrop-filter: blur(3px);
+    border: 1px solid rgba(255, 255, 255, 0.7);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+  }
+  
+  /* Style dla elementu ptaka w katalogu */
+  .catalog-bird-item {
+    background-color: rgba(255, 255, 255, 0.75);
+    backdrop-filter: blur(2px);
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  
+  .catalog-bird-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.12);
+  }
+  
+  /* Przyciski na ekranach mapy i katalogu */
+  .back-button {
+    background: linear-gradient(to bottom, #408cc7, #408cc7);
+    box-shadow: 0 2px 6px rgba(103, 58, 183, 0.3);
+    transition: all 0.2s ease;
+  }
+  
+  .back-button:hover {
+    background: linear-gradient(to bottom, #408cc7, #408cc7);
+    box-shadow: 0 4px 8px rgba(103, 58, 183, 0.4);
+  }
+  
+  /* Nagłówki na ekranach */
+  #map-screen h2, #bird-catalog-screen h2 {
+    color: #ffffff00;
+    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+    margin-bottom: 15px;
+  }
+  
+  /* Dodatkowe efekty dla przycisków w lokacjach */
+  .location-button.unlock-location-button {
+    background: linear-gradient(to bottom, #408cc7, #408cc7);
+    box-shadow: 0 2px 6px rgba(76, 175, 80, 0.3);
+    transition: all 0.2s ease;
+  }
+  
+  .location-button.unlock-location-button:hover {
+    background: linear-gradient(to bottom, #408cc7, #408cc7);
+    box-shadow: 0 4px 8px rgba(76, 175, 80, 0.4);
+  }
+  
+  
+  
+
+
+/* Styl dla NIEAKTYWNEGO przycisku wyboru lokacji (niebieski) */
+.location-button.select-location-button {
+    background: linear-gradient(to bottom, #5c94c5, #4b85b8);
+    box-shadow: 0 2px 6px rgba(75, 133, 184, 0.3);
+    transition: all 0.2s ease;
+    color: white;
+}
+
+/* Styl dla AKTYWNEGO przycisku wyboru lokacji (pomarańczowy) */
+.location-button.select-location-button.active,
+.location-button.active {
+    background: linear-gradient(to bottom, #5c94c5, #4b85b8);
+    color: #ffffff;
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.2);
+    font-weight: bold;
+}
+
+
+/* Dodatkowy selektor dla przycisku z tekstem "Wybrano" */
+.location-button:contains("Wybrano") {
+    background: linear-gradient(to bottom, #5c94c5, #4b85b8);
+    color: #ffffff !important;
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.2) !important;
+    font-weight: bold !important;
+}
+
+
+  
+
+
+/* Hover dla NIEAKTYWNEGO przycisku wyboru lokacji (zielony po najechaniu) */
+.location-button.select-location-button:hover {
+    background: linear-gradient(to bottom, #65cb5d, #4caf50);
+    box-shadow: 0 4px 8px rgba(76, 175, 80, 0.4);
+    transform: translateY(-2px);
+  }
+  
+  /* Hover dla AKTYWNEGO przycisku wyboru lokacji (ciemniejszy pomarańczowy po najechaniu) */
+  .location-button.select-location-button.active:hover,
+  .location-button.active:hover,
+  button.location-button:contains("Wybrano"):hover {
+    background: linear-gradient(to bottom, #e65100, #ef6c00);
+    box-shadow: 0 4px 8px rgba(255, 109, 0, 0.6);
+    transform: translateY(-2px);
+  }
+
+
+
+
+
+
+  .location-button.select-location-button.active {
+    background-color: #f57c00; /* Pomarańczowy kolor jak w nawigacji */
+    color: #ffffff;
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.2);
+    font-weight: bold;
+}
+  
+  /* Ulepszenia dla lokacji w katalogu */
+  .catalog-location[data-location="park"] {
+    border-left: 5px solid #4CAF50;
+    background: linear-gradient(to right, rgba(76, 175, 80, 0.05), rgba(249, 249, 249, 0.7));
+  }
+  
+  .catalog-location[data-location="lake"] {
+    border-left: 5px solid #2196F3;
+    background: linear-gradient(to right, rgba(33, 150, 243, 0.05), rgba(249, 249, 249, 0.7));
+  }
+  
+  /* Podświetlenie wybranej lokacji na mapie */
+  .selected-location {
+    border: 3px solid #4CAF50 !important;
+    box-shadow: 0 0 15px rgba(76, 175, 80, 0.5) !important;
+    background: linear-gradient(to right, rgba(243, 255, 243, 0.825), rgba(255, 255, 255, 0.7)) !important;
+  }
+
+
+
+/* Specjalny styl dla przycisku wybranej lokacji */
+.location-button, button.location-button, 
+.select-location-button, button.select-location-button,
+button.location-button.select-location-button,
+button.location-button.active,
+button.select-location-button.active,
+button:contains("Wybrano") {
+    background-color: #f57c00 !important; /* Pomarańczowy kolor jak w nawigacji */
+    color: #ffffff !important;
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.2) !important;
+    font-weight: bold !important;
+}
+
+/* Bezpośredni selektor dla przycisku Wybrano */
+button[data-location]:contains("Wybrano"),
+button.location-button:contains("Wybrano") {
+    background-color: #f57c00 !important;
+    color: #ffffff !important;
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.2) !important;
+}
+
+/* Specyficzne style dla przycisku powrotu na ekranie mapy */
+#map-screen .back-button {
+    position: fixed;
+    top: 56px;
+    left: 18px; /* Lewy róg */
+    z-index: 200;
+}
+
+/* Specyficzne style dla przycisku powrotu na ekranie katalogu */
+#bird-catalog-screen .back-button {
+    position: fixed;
+    top: 56px;
+    left: 18px; /* Lewy róg */
+    z-index: 200;
+}
+
+/* Dodatkowe style dla lepszej widoczności przycisku powrotu */
+.back-button {
+    transition: all 0.2s ease;
+    opacity: 0.9;
+}
+
+.back-button:hover {
+    opacity: 1;
+    transform: scale(1.05);
+}
+
+
+
+/* Animacja pulsowania dla przycisku */
+@keyframes pulse-bonus {
+    0% { box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2), 0 0 0 0 rgba(255, 204, 51, 0.4); }
+    50% { box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2), 0 0 20px 5px rgba(255, 204, 51, 0.6); }
+    100% { box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2), 0 0 0 0 rgba(255, 204, 51, 0.4); }
+}
+
+
+
+
+
+
+@keyframes bonus-section-glow {
+    from { box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); }
+    to { box-shadow: 0 5px 25px rgba(255, 204, 51, 0.4); }
+}
+
+
+
+
+
+/* Style dla pionowych obrazków lokacji */
+.locations-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+    gap: 20px;
+}
+
+.location-item {
+    display: flex;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 15px;
+    padding: 15px;
+    margin-bottom: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.location-image-container {
+    width: 120px;
+    margin-right: 15px;
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+.location-vertical-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.location-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/* Dodatkowe style dla zablokowanej lokacji */
+.location-item.locked .location-vertical-image {
+    filter: grayscale(70%) brightness(0.7);
+}
+
+
+/* Style dla placeholdera przyszłej lokacji */
+.location-item.coming-soon {
+    background-color: rgba(255, 255, 255, 0.6);
+    border: 2px dashed #888;
+    position: relative;
+    overflow: hidden;
+}
+
+.location-coming-soon-image {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #ddd;
+    color: #888;
+    font-size: 72px;
+    font-weight: bold;
+    border-radius: 10px;
+}
+
+.location-status.coming-soon-status {
+    background-color: #9c27b0;
+    color: white;
+    padding: 3px 8px;
+    border-radius: 10px;
+    font-weight: bold;
+}
+
+.coming-soon-button {
+    background-color: #9c27b0;
+    color: white;
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+.coming-soon-button:hover {
+    opacity: 0.7;
+    transform: none;
+    box-shadow: none;
+}
+
+
+
+
+/* Style dla przycisku "Nakarm wszystkie" / "Odbierz wszystkie" */
+.action-all-button {
+    margin-top: 10px;
+    background-color: #4CAF50; /* zielony dla przycisków aktywnych */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 15px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.1s;
+    display: block;
+    width: 100%;
+}
+
+.action-all-button:hover {
+    background-color: #45a049;
+    transform: translateY(-2px);
+}
+
+.action-all-button:active {
+    transform: scale(0.98);
+}
+
+.action-all-button.disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+    color: #666666;
+}
+
+.action-all-button.disabled:hover {
+    transform: none;
+}
+
+/* Ukryj przycisk dla zablokowanych lokacji */
+.location-item.locked .action-all-button {
+    display: none;
+}
+
+/* Style dla przycisku "Nakarm wszystkie" / "Odbierz wszystkie" */
+.action-all-button {
+    margin-top: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 15px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.1s;
+    display: block;
+    width: 100%;
+}
+
+.action-all-button:hover {
+    background-color: #45a049;
+    transform: translateY(-2px);
+}
+
+.action-all-button:active {
+    transform: scale(0.98);
+}
+
+.action-all-button.disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+    color: #666666;
+}
+
+.action-all-button.disabled:hover {
+    transform: none;
+}
+
+/* Ukryj przycisk dla zablokowanych lokacji */
+.location-item.locked .action-all-button {
+    display: none;
+}
+
+
+/* Animacja nagrody TON */
+.ton-reward-animation {
+    position: absolute;
+    font-size: 24px;
+    font-weight: bold;
+    color: #0088CC; /* Kolor niebieski dla TON */
+    text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+    pointer-events: none;
+    z-index: 1000;
+    animation: floatUp 1.5s forwards;
+}
+
+/* Style dla kontenerów przycisków w mapie lokacji */
+.location-content {
+    position: relative;
+}
+
+/* Utworzenie flexboxa dla przycisków */
+.location-buttons-container {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+    width: 100%;
+}
+
+/* Modyfikacja szerokości przycisków lokacji */
+.location-button.select-location-button,
+.action-all-button {
+    width: calc(50% - 5px);
+    margin: 0;
+    padding: 10px 5px;
+    box-sizing: border-box;
+    flex: 1;
+}
+
+/* Naprawienie odstępów */
+.location-button {
+    margin-top: 0;
+}
+
+/* Dodatkowe style dla ptaków z Brzegu Jeziora */
+.bird-image.lake-common, .lake-common {
+    background-image: url('./assets/images/lake-common.png') !important;
+    background-size: contain !important;
+    background-repeat: no-repeat !important;
+    background-position: center !important;
+}
+
+.bird-image.lake-rare, .lake-rare {
+    background-image: url('./assets/images/lake-rare.png') !important;
+    background-size: contain !important;
+    background-repeat: no-repeat !important;
+    background-position: center !important;
+}
+
+.bird-image.lake-epic, .lake-epic {
+    background-image: url('./assets/images/lake-epic.png') !important;
+    background-size: contain !important;
+    background-repeat: no-repeat !important;
+    background-position: center !important;
+}
+
+.bird-image.lake-legendary, .lake-legendary {
+    background-image: url('./assets/images/lake-legendary.png') !important;
+    background-size: contain !important;
+    background-repeat: no-repeat !important;
+    background-position: center !important;
+}
+
+.bird-image.lake-mythical, .lake-mythical {
+    background-image: url('./assets/images/lake-mythical.png') !important;
+    background-size: contain !important;
+    background-repeat: no-repeat !important;
+    background-position: center !important;
+}
+
+/* Rozwiązanie problemu z ukrytą siatką ptaków */
+.catalog-location:not(.location-locked) .bird-grid {
+    display: grid !important;
+}
+
+/* Ukrycie informacji o odblokowaniu dla odblokowanych lokacji */
+.catalog-location:not(.location-locked) .location-lock-info {
+    display: none !important;
+}
+
+
+
+
+
+
+
+
+
+#play-screen {
+    background-color: #8FBC8F;
+    background-image: url('assets/images/breeding-bg.jpg');
+    background-size: cover;
+    background-position: center;
+    display: none !important;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 !important; /* nadpisanie paddingu z game-screen */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh !important; /* nadpisanie wysokości z game-screen */
+    z-index: 1000;
+    overflow: hidden !important; /* nadpisanie overflow z game-screen */
+    min-height: 100vh !important; /* nadpisanie min-height z game-screen */
+    max-height: 100vh !important; /* nadpisanie max-height z game-screen */
+}
+
+
+
+
+
+#play-screen.active {
+    display: flex !important;
+}
+
+#play-bird-container {
+    position: absolute;
+    top: 30%; /* zmieniono z 50% na 40% */
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    width: 100%;
+}
+
+#play-bird-image {
+    width: 300px;
+    height: 300px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    margin: 0 auto 50px auto;
+    cursor: pointer;
+    transition: transform 0.1s ease;
+    border-radius: 20px;
+    overflow: hidden;
+    position: relative;
+    /* Dodaj te właściwości, aby zapobiec zaznaczaniu */
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -webkit-user-drag: none;
+    -khtml-user-drag: none;
+    -moz-user-drag: none;
+    -o-user-drag: none;
+    pointer-events: auto;
+}
+
+#play-bird-image:active {
+    transform: scale(0.95);
+}
+
+#play-happiness-bar-container {
+    position: absolute;
+    bottom: -25px; /* zmieniono z 150px na 100px */
+    width: 300px;
+    margin-left: auto;
+    margin-right: auto;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+#play-happiness-bar-container .stat-bar {
+    width: 100%;
+    height: 20px;
+    background-color: #e0e0e0;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 5px;
+}
+
+#play-happiness-bar {
+    height: 100%;
+    background-color: #4CAF50;
+    transition: width 0.3s ease;
+}
+
+#play-happiness-text {
+    font-size: 18px;
+    font-weight: bold;
+    color: white;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+/* Przycisk powrotu dla ekranu zabawy */
+#play-screen .back-button {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    z-index: 200;
+}
+
+/* Animacje dla ptaka */
+.bird-jump {
+    animation: birdJump 0.3s ease;
+}
+
+.bird-happy {
+    animation: birdHappy 1s ease;
+}
+
+.bird-flip {
+    animation: birdFlip 0.8s ease;
+}
+
+@keyframes birdJump {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-50px); }
+    100% { transform: translateY(0); }
+}
+
+@keyframes birdHappy {
+    0% { transform: scale(1) rotate(0deg); }
+    25% { transform: scale(1.1) rotate(-5deg); }
+    50% { transform: scale(1.1) rotate(5deg); }
+    75% { transform: scale(1.1) rotate(-5deg); }
+    100% { transform: scale(1) rotate(0deg); }
+}
+
+@keyframes birdFlip {
+    0% { transform: scale(1) rotate(0deg); }
+    50% { transform: scale(1.1) rotate(360deg); }
+    100% { transform: scale(1) rotate(0deg); }
+}
+
+/* Animacje konfetti i gwiazdek */
+
+
+
+
+
+.confetti-particle {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    pointer-events: none;
+    z-index: 1001; /* zwiększony z-index */
+}
+
+.star-particle {
+    position: absolute;
+    color: yellow;
+    font-size: 20px;
+    pointer-events: none;
+    animation: starShine 1s ease-out;
+    z-index: 1001; /* zwiększony z-index */
+}
+
+
+
+.heart-particle {
+    position: absolute;
+    color: red;
+    font-size: 20px;
+    pointer-events: none;
+    animation: floatHeart 1.5s ease-out;
+    z-index: 1001; /* zwiększony z-index */
+}
+
+
+
+
+
+@keyframes floatHeart {
+    0% { transform: translateY(0) scale(0.5); opacity: 0; }
+    10% { opacity: 1; }
+    100% { transform: translateY(-150px) scale(1.5) rotate(36deg); opacity: 0; }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Style dla ekranu sortowania ziarenek */
+#sorting-game-screen {
+    background-image: url('assets/images/breeding-bg.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding: 0;
+    overflow: hidden !important; /* Ważne: Bez scrollowania! */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 500;
+    display: none;
+}
+
+
+#sorting-game-screen.active {
+    display: block !important;
+}
+
+
+
+#sorting-game-container {
+    position: absolute;
+    top: 50%; /* Środek ekranu */
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    max-width: 400px;
+    height: 60vh; /* 60% wysokości ekranu */
+}
+
+
+#seeds-remaining {
+    position: absolute;
+    bottom: 100px;
+    width: 100%;
+    text-align: center;
+}
+
+.back-button {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    z-index: 200;
+}
+
+
+#seeds-container {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: calc(100% - 100px); /* Odległość od miseczek */
+}
+
+.draggable-seed {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    cursor: grab;
+    transition: transform 0.2s;
+    z-index: 10;
+}
+
+.bowl {
+    width: 80px;
+    height: 80px;
+    position: relative;
+    cursor: pointer;
+}
+
+#bowls-container {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+}
+
+#sorting-timer {
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+}
+
+#summary-screen {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    color: white;
+    text-align: center;
+    z-index: 1000;
+}
+
+#summary-screen button {
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+#summary-screen button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+#summary-screen button:active {
+    transform: translateY(0);
+    box-shadow: none;
+}
+
+.draggable-seed:hover {
+    transform: scale(1.1) !important;
+}
+
+
+
+
+
+
+@keyframes confettiFall {
+    0% { transform: translate(0, 0) rotate(0deg); opacity: 1; }
+    100% { transform: translate(var(--tx), var(--ty)) rotate(360deg); opacity: 0; }
+}
+
+
+/* Zapobieganie zaznaczaniu tekstu dla wszystkich przycisków */
+button {
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+}
+
+
+/* Dodatkowe style do obsługi dotykowej dla mini-gry sortowania */
+.draggable-seed {
+    touch-action: none; /* Wyłącza domyślne zachowania dotykowe */
+    -webkit-user-select: none; /* Zapobiega zaznaczaniu tekstu */
+    user-select: none;
+}
+
+.bowl {
+    touch-action: none; /* Wyłącza przewijanie przy dotknięciu miseczki */
+    z-index: 5; /* Zapewnia, że miseczki są pod ziarnami, ale nad tłem */
+}
+
+/* Zwiększ obszar dotyku miseczek dla łatwiejszego upuszczania */
+#bowls-container {
+    margin-top: 20px;
+}
+
+/* Zapobiegaj przewijaniu na ekranie gry */
+#sorting-game-screen {
+    touch-action: none;
+    overflow: hidden;
+}
+
+
+
+/* Dodaj na początku lub końcu pliku style.css */
+
+/* Globalne zapobieganie zaznaczaniu dla przycisków i obrazów interaktywnych */
+button, 
+.bird-image, 
+.draggable-seed, 
+#play-bird-image,
+.pet-image,
+[class^="pet-"],
+.catalog-bird-image,
+.decoration-image,
+.location-image-container img {
+    /* Wyłączenie zaznaczania */
+    user-select: none !important;
+    -webkit-user-select: none !important;
+    -moz-user-select: none !important;
+    -ms-user-select: none !important;
+    
+   
+    
+    /* Zapobieganie podświetleniu przy kliknięciu na urządzeniach mobilnych */
+    -webkit-tap-highlight-color: transparent !important;
+    
+    /* Upewnienie się, że elementy reagują na zdarzenia dotyku */
+    pointer-events: auto;
+}
+
+/* Dodatkowe poprawki dla elementu zabawy z ptakiem */
+#play-bird-container,
+#play-bird-image {
+    position: relative;
+    touch-action: manipulation;
+    -webkit-touch-callout: none !important;
+}
+
+/* Wyłączenie długiego przytrzymania i menu kontekstowego */
+#game-container {
+    -webkit-touch-callout: none !important;
+}
+
+/* Wyłączenie zaznaczania tekstu w całej grze */
+#game-container,
+.game-screen,
+.bird-slot,
+.mission-item,
+.wallet-container,
+.catalog-container,
+.breeding-area {
+    user-select: none !important;
+    -webkit-user-select: none !important;
+    -moz-user-select: none !important;
+    -ms-user-select: none !important;
+}
+
+
+
+
+/* Style dla ekranu sklepu */
+#shop-screen {
+    padding: 15px !important;
+    overflow-y: auto !important;
+}
+
+/* Ujednolicone style dla wszystkich głównych kontenerów */
+.shop-container,
+.catalog-container {
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: rgba(255, 255, 255, 0.489);
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.shop-container {
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: rgba(255, 255, 255, 0.489);
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.shop-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+.shop-title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #4CAF50;
+}
+
+.shop-balance {
+    display: flex;
+    align-items: center;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.shop-balance .currency-icon {
+    width: 24px;
+    height: 24px;
+    margin-right: 8px;
+}
+
+.shop-section {
+    margin-bottom: 30px;
+    padding: 15px;
+    background-color: rgba(240, 240, 240, 0.7);
+    border-radius: 8px;
+    border: 1px solid #ddd;
+}
+
+.shop-section.locked {
+    opacity: 0.7;
+    background-color: rgba(220, 220, 220, 0.7);
+    border: 1px dashed #aaa;
+}
+
+.shop-section-header {
+    margin-bottom: 15px;
+}
+
+.shop-section-header h3 {
+    margin: 0 0 5px 0;
+    color: #333;
+}
+
+.shop-section-header p {
+    margin: 0;
+    color: #666;
+    font-size: 14px;
+}
+
+.decoration-items {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 15px;
+}
+
+.decoration-item {
+    display: flex;
+    background-color: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.decoration-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.decoration-image-container {
+    width: 100px;
+    height: 100px;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f9f9f9;
+}
+
+.decoration-image {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+.decoration-content {
+    flex: 1;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.decoration-name {
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+.decoration-description {
+    font-size: 12px;
+    color: #666;
+    margin-bottom: 8px;
+}
+
+.decoration-bonus {
+    font-size: 13px;
+    font-weight: bold;
+    color: #4CAF50;
+    margin-bottom: 10px;
+}
+
+.buy-decoration-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #2196F3;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 8px 12px;
+    font-size: 14px;
+    margin-top: auto;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.buy-decoration-button:hover {
+    background-color: #1976D2;
+}
+
+.buy-decoration-button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+.currency-icon-small {
+    width: 16px;
+    height: 16px;
+    margin-right: 4px;
+}
+
+.decoration-item.owned .buy-decoration-button {
+    background-color: #4CAF50;
+    cursor: default;
+}
+
+.decoration-item.owned .buy-decoration-button::before {
+    content: "✓ ";
+}
+
+/* Styl dla przycisku powrotu na ekranie sklepu */
+#shop-screen .back-button {
+    position: fixed;
+    top: 66px;
+    left: 18px; /* Lewy róg */
+    z-index: 200;
+}
+
+
+
+
+
+
+
+/* Przycisk otwarcia sklepu */
+.shop-button {
+    position: fixed;
+    top: 207px;
+    right: 42px;
+    width: 50px;
+    height: 50px;
+    background-color: #7faff397;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    cursor: pointer;
+    z-index: 150;
+    transition: transform 0.2s, background-color 0.2s;
+}
+
+.shop-button:hover {
+    transform: scale(1.1);
+    background-color: #5fa1b0e0;
+}
+
+.shop-button img.shop-icon {
+    width: 45px;
+    height: 45px;
+    object-fit: contain;
+}
+/* Style dla dekoracji na ekranie lokacji */
+.screen-decoration {
+    position: absolute;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    pointer-events: none;
+    z-index: 10;
+}
+
+/* Specyficzne style dla poszczególnych dekoracji */
+.decoration-bench {
+    bottom: 15%;
+    left: 15%;
+    width: 150px;
+    height: 100px;
+}
+
+.decoration-fountain {
+    bottom: 30%;
+    left: 50%;
+    width: 120px;
+    height: 120px;
+    transform: translateX(-50%);
+}
+
+.decoration-balloon {
+    top: 20%;
+    right: 20%;
+    width: 100px;
+    height: 150px;
+    animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0); }
+}
+
+
+/* Styl dla zablokowanego przycisku zakupu */
+.locked-button {
+    background-color: #888 !important;
+    opacity: 0.7;
+    cursor: not-allowed !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.locked-button .lock-icon {
+    margin-right: 5px;
+    font-style: normal;
+}
+
+.decoration-requirement {
+    color: #FF5722;
+    font-style: italic;
+    font-size: 12px;
+    margin-top: 5px;
+    padding-left: 3px;
+    border-left: 2px solid #FF5722;
+}
+
+
+
+
+
+
+
+
+
+/* Style dla wizualnych dekoracji na ekranie karmienia */
+.screen-decoration {
+    position: absolute;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    pointer-events: none;
+    z-index: 10;
+}
+
+/* Specyficzne style dla poszczególnych dekoracji */
+.decoration-bench {
+    display: none;
+}
+
+.decoration-fountain {
+    display: none;
+}
+
+.decoration-balloon {
+    display: none;
+}
+
+@keyframes float {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0); }
+}
+
+/* Style dla kontenera aktywnych bonusów */
+#active-bonuses-container {
+    position: absolute;
+    top: 70px;
+    left: 10px;
+    background-color: rgba(255, 255, 255, 0.163);
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    z-index: 50;
+    max-width: 180px;
+    font-size: 14px;
+    line-height: 1.4;
+}
+
+#active-bonuses-container div:first-child {
+    font-weight: bold;
+    margin-bottom: 5px;
+    text-align: center;
+}
+
+/* Misje - nowy design */
+.missions-section {
+    margin-bottom: 20px;
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 15px;
+    padding: 15px;
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.section-title-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.section-title {
+    color: #ffffff;
+    font-size: 18px;
+    font-weight: bold;
+    margin: 0;
+}
+
+.section-icon {
+    font-size: 24px;
+}
+
+.reset-timer {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.timer-icon {
+    font-size: 14px;
+}
+
+/* Pojedyncza misja */
+.mission-item {
+    background: linear-gradient(135deg, rgba(33, 150, 243, 0.9), rgba(3, 169, 244, 0.8));
+    border-radius: 12px;
+    padding: 12px;
+    margin-bottom: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    position: relative;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    min-height: 80px;
+}
+
+.mission-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+.mission-item.mission-complete {
+    background: linear-gradient(135deg, rgba(76, 175, 80, 0.9), rgba(67, 160, 71, 0.8));
+}
+
+.mission-item.mission-rewarded {
+    background: linear-gradient(135deg, rgba(158, 158, 158, 0.6), rgba(117, 117, 117, 0.5));
+}
+
+/* Ikona misji */
+.mission-icon {
+    width: 50px;
+    height: 50px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    margin-right: 12px;
+    flex-shrink: 0;
+}
+
+/* Zawartość misji */
+.mission-content {
+    flex: 1;
+    min-width: 0;
+}
+
+.mission-title {
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 4px;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.mission-description {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 12px;
+    margin-bottom: 6px;
+}
+
+.mission-progress-container {
+    width: 100%;
+    margin: 6px 0;
+}
+
+.mission-progress {
+    width: 100%;
+    height: 6px;
+    background-color: rgba(0, 0, 0, 0.3);
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.mission-progress-bar {
+    height: 100%;
+    background: linear-gradient(90deg, #FFD700, #FFA500);
+    border-radius: 3px;
+    transition: width 0.5s ease;
+}
+
+.mission-status {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 12px;
+    margin-top: 4px;
+}
+
+/* Prawa strona misji */
+.mission-right {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    margin-left: 12px;
+}
+
+.mission-reward {
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 8px;
+    padding: 4px 8px;
+    color: #ffffff;
+    font-size: 12px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    white-space: nowrap;
+}
+
+.reward-icon {
+    font-size: 14px;
+}
+
+/* Przycisk odbierz */
+.claim-reward-button {
+    background: linear-gradient(135deg, #4CAF50, #45a049);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 6px 12px;
+    font-size: 12px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.claim-reward-button:hover {
+    background: linear-gradient(135deg, #45a049, #4CAF50);
+    transform: scale(1.05);
+}
+
+.claim-reward-button:active {
+    transform: scale(0.95);
+}
+
+/* Znacznik ukończono */
+.mission-completed {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 12px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+/* Strzałka */
+.mission-arrow {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 16px;
+    margin-left: 8px;
+}
+
+/* Tag NEW */
+.mission-new-tag {
+    position: absolute;
+    top: -8px;
+    right: 10px;
+    background: #FF5722;
+    color: white;
+    font-size: 10px;
+    font-weight: bold;
+    padding: 2px 6px;
+    border-radius: 12px;
+    border: 2px solid #ffffff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Responsywność */
+@media (max-width: 380px) {
+    .mission-item {
+        padding: 10px;
+        min-height: 70px;
+    }
+    
+    .mission-icon {
+        width: 40px;
+        height: 40px;
+        font-size: 20px;
+    }
+    
+    .mission-title {
+        font-size: 13px;
+    }
+    
+    .mission-description,
+    .mission-status,
+    .mission-reward {
+        font-size: 11px;
+    }
+}
+
+
+
+
+
+
+/* Ikona DziubCoina */
+.coin-icon {
+    width: 26px;
+    height: 26px;
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0 2px;
+}
+
+.mission-reward .coin-icon {
+    width: 44px;
+    height: 44px;
+}
+
+.reward-animation .coin-icon {
+    width: 25px;
+    height: 25px;
+    margin-left: 4px;
+}
+
+/* Nagroda w misji */
+.mission-reward {
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 8px;
+    padding: 4px 8px;
+    color: #ffffff;
+    font-size: 12px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    white-space: nowrap;
+}
+
+/* Animacja nagrody */
+.reward-animation {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+
+
+
+
+/* Pasek zasobów - ikony */
+#resource-bar .resource-icon {
+    width: 29px;
+    height: 29px;
+    margin-right: 5px;
+    vertical-align: middle;
+}
+
+/* Animacja odbierania monet */
+@keyframes coinCollect {
+    0% {
+        transform: scale(1) translateY(0);
+    }
+    50% {
+        transform: scale(1.2) translateY(-10px);
+    }
+    100% {
+        transform: scale(1) translateY(0);
+    }
+}
+
+.coin-collect-animation {
+    animation: coinCollect 0.5s ease-in-out;
+}
+
+
+
+
+
+.mission-badge-dot {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    width: 10px;
+    height: 10px;
+    background-color: red;
+    border-radius: 50%;
+    z-index: 100;
+}
+
+.nav-button[data-screen="missions-screen"] {
+    position: relative;
+}
+
+
+@keyframes seedFloatUp {
+    0% { transform: translate(-50%, -100%); opacity: 1; }
+    100% { transform: translate(-50%, -200%); opacity: 0; }
+}
+
+.seed-animation {
+    position: absolute;
+    z-index: 9999;
+    font-size: 18px;
+    font-weight: bold;
+    color: #4CAF50;
+    text-shadow: 0 0 3px white;
+    pointer-events: none;
+    animation: seedFloatUp 1.5s ease-out forwards;
+}
