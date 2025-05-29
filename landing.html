@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FEED & FLAP - Earn Real TON Playing Tamagotchi with Birds!</title>
+    <meta name="description" content="Breed birds, collect seeds and earn real TON! Join thousands of players in the best Telegram game.">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://yourdomain.com/">
+    <meta property="og:title" content="FEED & FLAP - Earn TON Playing!">
+    <meta property="og:description" content="Breed birds, collect seeds and earn real TON!">
+    <meta property="og:image" content="https://yourdomain.com/assets/og-image.jpg">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://yourdomain.com/">
+    <meta property="twitter:title" content="FEED & FLAP - Earn TON Playing!">
+    <meta property="twitter:description" content="Breed birds, collect seeds and earn real TON!">
+    <meta property="twitter:image" content="https://yourdomain.com/assets/og-image.jpg">
+
+   <link rel="icon" type="image/png" href="assets/images/logo.png">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        /* HERO SECTION */
+        .hero {
+            background: linear-gradient(135deg, #43b5e2 0%, #2196f3 50%, #1976d2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="20" cy="20" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="80" cy="40" r="1" fill="rgba(255,255,255,0.08)"/><circle cx="40" cy="80" r="1" fill="rgba(255,255,255,0.06)"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+            opacity: 0.3;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            padding: 2rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .logo {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 2rem;
+            border-radius: 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero .subtitle {
+            font-size: 1.4rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+            font-weight: 300;
+        }
+
+        .cta-button {
+            background: linear-gradient(45deg, #FFC107, #FF9800);
+            color: white;
+            padding: 18px 40px;
+            font-size: 1.3rem;
+            font-weight: 700;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            box-shadow: 0 8px 25px rgba(255, 193, 7, 0.4);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-button:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.5s;
+        }
+
+        .cta-button:hover:before {
+            left: 100%;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(255, 193, 7, 0.6);
+        }
+
+        /* FEATURES SECTION */
+        .features {
+            padding: 5rem 2rem;
+            background: #f8f9fa;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            color: #2c3e50;
+            margin-bottom: 3rem;
+            font-weight: 700;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 3px solid transparent;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .feature-card:nth-child(1) { border-color: #4CAF50; }
+        .feature-card:nth-child(2) { border-color: #FFC107; }
+        .feature-card:nth-child(3) { border-color: #9C27B0; }
+        .feature-card:nth-child(4) { border-color: #43b5e2; }
+
+     .feature-icon {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 1rem;
+    display: block;
+    object-fit: contain;
+}
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            color: #2c3e50;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .feature-card p {
+            color: #7f8c8d;
+            line-height: 1.6;
+        }
+
+        /* ROADMAP SECTION */
+        .roadmap {
+            padding: 5rem 2rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .roadmap-timeline {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .roadmap-timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: rgba(255,255,255,0.3);
+            transform: translateX(-50%);
+        }
+
+        .roadmap-item {
+            display: flex;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .roadmap-item:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+
+        .roadmap-content {
+            flex: 1;
+            background: rgba(255,255,255,0.1);
+            padding: 2rem;
+            border-radius: 15px;
+            margin: 0 2rem;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .roadmap-dot {
+            position: absolute;
+            left: 50%;
+            top: 2rem;
+            width: 20px;
+            height: 20px;
+            background: #FFC107;
+            border-radius: 50%;
+            transform: translateX(-50%);
+            border: 4px solid white;
+            z-index: 2;
+        }
+
+        .roadmap-quarter {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            margin-bottom: 0.5rem;
+        }
+
+        .roadmap-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+       /* HOW IT WORKS SECTION */
+.how-it-works {
+    padding: 4rem 2rem;
+    background: #2c3e50;
+    color: white;
+}
+
+.steps-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.step-card {
+    text-align: center;
+    padding: 2rem;
+    background: rgba(255,255,255,0.1);
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.2);
+}
+
+.step-number {
+    width: 60px;
+    height: 60px;
+    background: #FFC107;
+    color: #2c3e50;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8rem;
+    font-weight: 800;
+    margin: 0 auto 1.5rem;
+}
+
+.step-card h3 {
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+    color: #FFC107;
+}
+
+.step-card p {
+    opacity: 0.9;
+    line-height: 1.6;
+}
+
+        /* LEGAL SECTION */
+        .legal {
+            padding: 3rem 2rem;
+            background: #34495e;
+            color: white;
+        }
+
+        .legal-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .legal-card {
+            background: rgba(255,255,255,0.1);
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+        }
+
+        .legal-card h3 {
+            color: #FFC107;
+            margin-bottom: 1rem;
+        }
+
+        .legal-link {
+            color: #43b5e2;
+            text-decoration: none;
+            font-weight: 600;
+            border-bottom: 2px solid transparent;
+            transition: border-bottom 0.3s ease;
+        }
+
+        .legal-link:hover {
+            border-bottom: 2px solid #43b5e2;
+        }
+
+        /* FOOTER */
+        .footer {
+            background: #1a252f;
+            color: white;
+            padding: 3rem 2rem 2rem;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .social-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            background: #43b5e2;
+            color: white;
+            border-radius: 50%;
+            text-decoration: none;
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(67, 181, 226, 0.4);
+        }
+
+        .email {
+            color: #43b5e2;
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .email:hover {
+            text-decoration: underline;
+        }
+
+        .copyright {
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid #34495e;
+            opacity: 0.7;
+        }
+
+        /* MOBILE RESPONSIVENESS */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero .subtitle {
+                font-size: 1.1rem;
+            }
+
+            .cta-button {
+                padding: 15px 30px;
+                font-size: 1.1rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .roadmap-timeline::before {
+                left: 30px;
+            }
+
+            .roadmap-item {
+                flex-direction: column !important;
+                padding-left: 60px;
+            }
+
+            .roadmap-item:nth-child(even) {
+                flex-direction: column !important;
+            }
+
+            .roadmap-content {
+                margin: 0;
+            }
+
+            .roadmap-dot {
+                left: 30px;
+            }
+
+            .social-links {
+                flex-wrap: wrap;
+                gap: 1rem;
+            }
+        }
+
+        /* ANIMATIONS */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* LOADING ANIMATION */
+        .loading {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #43b5e2, #2196f3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease;
+        }
+
+        .loading.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 5px solid rgba(255,255,255,0.3);
+            border-top: 5px solid white;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <!-- LOADING SCREEN -->
+    <div class="loading" id="loading">
+        <div class="spinner"></div>
+    </div>
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <div class="hero-content">
+            <img src="assets/images/logo.png" alt="FEED & FLAP Logo" class="logo">
+            <h1>FEED & FLAP</h1>
+            <p class="subtitle">Breed birds, collect seeds and earn real TON!</p>
+            <a href="https://t.me/your_bot" class="cta-button" id="playButton">
+                🎮 PLAY NOW FOR FREE
+            </a>
+        </div>
+    </section>
+
+    <!-- FEATURES SECTION -->
+    <section class="features">
+        <div class="container">
+            <h2 class="section-title fade-in">Why You'll Love FEED & FLAP?</h2>
+            <div class="features-grid">
+               
+                
+<div class="feature-card fade-in">
+    <img src="assets/images/bird-egg.png" alt="Bird Egg" class="feature-icon">
+    <h3>Bird Breeding</h3>
+    <p>Hatch eggs, raise cute birds and watch them grow. Each bird has a unique personality!</p>
+</div>
+<div class="feature-card fade-in">
+    <img src="assets/images/seed-icon.png" alt="Seeds" class="feature-icon">
+    <h3>Seed Collection</h3>
+    <p>Collect seeds automatically and manually. Upgrade your tools for bigger profits!</p>
+</div>
+<div class="feature-card fade-in">
+    <img src="assets/images/lake-mythical.png" alt="Mythical Bird" class="feature-icon">
+    <h3>Bird Feeding</h3>
+    <p>Feed wild birds to discover new species - from common to legendary and mythical!</p>
+</div>
+<div class="feature-card fade-in">
+    <img src="assets/images/ton-icon.png" alt="TON" class="feature-icon">
+    <h3>TON Rewards</h3>
+    <p>Earn real TON for playing! Mythical birds and expeditions bring the biggest rewards.</p>
+</div>
+
+
+
+            </div>
+        </div>
+    </section>
+
+    
+    <!-- HOW IT WORKS SECTION -->
+<section class="how-it-works">
+    <div class="container">
+        <h2 class="section-title">How It Works</h2>
+        <div class="steps-grid">
+            <div class="step-card fade-in">
+                <div class="step-number">1</div>
+                <h3>Start on Telegram</h3>
+                <p>Click "Play Now" and start the game directly in Telegram. No downloads needed!</p>
+            </div>
+            <div class="step-card fade-in">
+                <div class="step-number">2</div>
+                <h3>Hatch Your First Bird</h3>
+                <p>Get your first egg, take care of it, and watch your cute bird hatch and grow!</p>
+            </div>
+            <div class="step-card fade-in">
+                <div class="step-number">3</div>
+                <h3>Feed & Discover</h3>
+                <p>Feed wild birds to discover new species. Find mythical birds for TON rewards!</p>
+            </div>
+            <div class="step-card fade-in">
+                <div class="step-number">4</div>
+                <h3>Earn Real TON</h3>
+                <p>Send your grown birds on expeditions and earn real TON cryptocurrency!</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <!-- ROADMAP SECTION -->
+    <section class="roadmap">
+        <div class="container">
+            <h2 class="section-title">Development Roadmap</h2>
+            <div class="roadmap-timeline">
+                <div class="roadmap-item fade-in">
+                    <div class="roadmap-content">
+                        <div class="roadmap-quarter">Q1 2025 - COMPLETED</div>
+                        <div class="roadmap-title">🎮 Core Game</div>
+                        <p>Bird breeding, feeding, seed collection, expeditions, first TON rewards</p>
+                    </div>
+                    <div class="roadmap-dot"></div>
+                </div>
+                
+                <div class="roadmap-item fade-in">
+                    <div class="roadmap-content">
+                        <div class="roadmap-quarter">Q2 2025</div>
+                        <div class="roadmap-title">💰 Payout System</div>
+                        <p>Automatic TON payouts, in-game wallet</p>
+                    </div>
+                    <div class="roadmap-dot"></div>
+                </div>
+                
+                <div class="roadmap-item fade-in">
+                    <div class="roadmap-content">
+                        <div class="roadmap-quarter">Q3 2025</div>
+                        <div class="roadmap-title">🏆 Tournaments</div>
+                        <p>Weekly tournaments, leaderboards, rewards for top players</p>
+                    </div>
+                    <div class="roadmap-dot"></div>
+                </div>
+                
+                <div class="roadmap-item fade-in">
+                    <div class="roadmap-content">
+                        <div class="roadmap-quarter">Q4 2025</div>
+                        <div class="roadmap-title">🏰 Guilds & New Locations</div>
+                        <p>Guild system, cooperation, new locations with unique birds</p>
+                    </div>
+                    <div class="roadmap-dot"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- LEGAL SECTION -->
+    <section class="legal" id="legal">
+        <div class="container">
+            <h2 class="section-title">Legal Information</h2>
+            <div class="legal-grid">
+                <div class="legal-card fade-in">
+                    <h3>📋 Terms of Service</h3>
+                    <p>Learn about game rules, TON reward policy and gameplay regulations.</p>
+                    <br>
+                    <a href="terms-of-service.html" class="legal-link">Read Terms of Service →</a>
+                </div>
+                <div class="legal-card fade-in">
+                    <h3>🔒 Privacy Policy</h3>
+                    <p>Find out how we protect your data and what information we collect.</p>
+                    <br>
+                    <a href="privacy-policy.html" class="legal-link">Privacy Policy →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-content">
+           <div class="social-links">
+    <a href="https://t.me/your_channel" class="social-link" title="Telegram">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/>
+        </svg>
+    </a>
+    <a href="https://tiktok.com/@your_profile" class="social-link" title="TikTok">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/>
+        </svg>
+    </a>
+    <a href="https://facebook.com/your_profile" class="social-link" title="Facebook">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+        </svg>
+    </a>
+    <a href="https://x.com/your_profile" class="social-link" title="X (Twitter)">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+        </svg>
+    </a>
+</div>
+            
+            <div>
+                <p>Have questions? Contact us:</p>
+                <a href="mailto:feed.and.flap@gmail.com" class="email">feed.and.flap@gmail.com</a>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2025 FEED & FLAP. All rights reserved.</p>
+                <p>Game available exclusively on Telegram</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // LOADING SCREEN
+        window.addEventListener('load', function() {
+            setTimeout(() => {
+                document.getElementById('loading').classList.add('hidden');
+            }, 1000);
+        });
+
+        // SCROLL ANIMATIONS
+        function isElementInViewport(el) {
+            const rect = el.getBoundingClientRect();
+            return (
+                rect.top >= 0 &&
+                rect.left >= 0 &&
+                rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+                rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+            );
+        }
+
+        function handleScrollAnimations() {
+            const elements = document.querySelectorAll('.fade-in');
+            elements.forEach(el => {
+                if (isElementInViewport(el) || window.scrollY + window.innerHeight > el.offsetTop + 100) {
+                    el.classList.add('visible');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', handleScrollAnimations);
+        window.addEventListener('load', handleScrollAnimations);
+
+        // COUNTER ANIMATIONS
+        function animateCounters() {
+            const counters = [
+                { id: 'playersCount', target: 2847, suffix: '' },
+                { id: 'tonEarned', target: 0.156, suffix: '', decimals: 3 },
+                { id: 'birdsHatched', target: 12394, suffix: '' }
+            ];
+
+            counters.forEach(counter => {
+                const element = document.getElementById(counter.id);
+                if (!element) return;
+
+                let current = 0;
+                const increment = counter.target / 100;
+                const timer = setInterval(() => {
+                    current += increment;
+                    if (current >= counter.target) {
+                        current = counter.target;
+                        clearInterval(timer);
+                    }
+                    
+                    if (counter.decimals) {
+                        element.textContent = current.toFixed(counter.decimals) + counter.suffix;
+                    } else {
+                        element.textContent = Math.floor(current).toLocaleString() + counter.suffix;
+                    }
+                }, 20);
+            });
+        }
+
+        // INTERSECTION OBSERVER FOR COUNTERS
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && entry.target.classList.contains('social-proof')) {
+                    animateCounters();
+                    observer.unobserve(entry.target);
+                }
+            });
+        });
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const socialProofSection = document.querySelector('.social-proof');
+            if (socialProofSection) {
+                observer.observe(socialProofSection);
+            }
+        });
+
+        // SMOOTH SCROLLING FOR ANCHOR LINKS
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // PLAY BUTTON ANALYTICS
+        document.getElementById('playButton').addEventListener('click', function() {
+            // Google Analytics event (add when you have GA)
+            // gtag('event', 'click', {
+            //     'event_category': 'CTA',
+            //     'event_label': 'Play Button',
+            //     'value': 1
+            // });
+            
+            console.log('Play button clicked!');
+        });
+
+        // PERFORMANCE OPTIMIZATION
+        let ticking = false;
+        function requestTick() {
+            if (!ticking) {
+                requestAnimationFrame(handleScrollAnimations);
+                ticking = true;
+            }
+        }
+
+        window.addEventListener('scroll', () => {
+            requestTick();
+            ticking = false;
+        });
+    </script>
+</body>
+</html>
