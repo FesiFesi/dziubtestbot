@@ -87,19 +87,23 @@
             margin: 1.5rem 0 0.5rem;
         }
 
-        p {
+        p, li {
             margin-bottom: 1rem;
             text-align: justify;
         }
 
-        .placeholder {
-            background: #f3e5f5;
-            padding: 2rem;
+        ul {
+            margin-left: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .gdpr-box {
+            background: #e8f5e8;
+            border: 1px solid #4caf50;
+            padding: 1.5rem;
             border-radius: 10px;
-            text-align: center;
-            color: #7b1fa2;
-            font-style: italic;
             margin: 2rem 0;
+            border-left: 5px solid #4caf50;
         }
 
         .contact-info {
@@ -114,6 +118,15 @@
             color: white;
             text-align: center;
             padding: 2rem;
+        }
+
+        .footer a {
+            color: #43b5e2;
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
         }
 
         @media (max-width: 768px) {
@@ -133,70 +146,172 @@
         <div class="container">
             <a href="landing.html" class="back-button">← Back to Main</a>
             <h1>Privacy Policy</h1>
-            <p class="last-updated">Last updated: January 2025</p>
+            <p class="last-updated">Last updated: May 2025</p>
         </div>
     </div>
 
     <div class="container">
         <div class="content">
+            <p>This Privacy Policy describes how FEED & FLAP ("we," "us," or "our") collects, uses, and protects your information when you use our Telegram-based game.</p>
+
             <h2>1. Information We Collect</h2>
-            <div class="placeholder">
-                📊 Here will be detailed information about what data we collect from Telegram users, game progress, and analytics.
-            </div>
+            
+            <h3>1.1 Telegram User Data</h3>
+            <p>When you interact with our bot, we collect:</p>
+            <ul>
+                <li>Telegram user ID (numerical identifier)</li>
+                <li>Username (if public)</li>
+                <li>First name and last name (if provided)</li>
+                <li>Language preference</li>
+                <li>Profile photo (if public)</li>
+            </ul>
+
+            <h3>1.2 Game Data</h3>
+            <p>We collect and store:</p>
+            <ul>
+                <li>Game progress and statistics</li>
+                <li>Virtual items and currency balances</li>
+                <li>Game actions and interactions</li>
+                <li>Transaction history within the game</li>
+                <li>Referral and invitation data</li>
+                <li>Time spent playing and session data</li>
+            </ul>
+
+            <h3>1.3 Device and Technical Information</h3>
+            <ul>
+                <li>IP address and geolocation (approximate)</li>
+                <li>Device type and operating system</li>
+                <li>Browser information</li>
+                <li>Access times and dates</li>
+                <li>Error logs and crash reports</li>
+            </ul>
 
             <h2>2. How We Use Your Information</h2>
-            <div class="placeholder">
-                🔧 Here will be explanation of how collected data is used for game functionality, improvements, and user experience.
-            </div>
+            <p>We use collected information for:</p>
+            <ul>
+                <li><strong>Game Functionality:</strong> Providing core game features, saving progress, managing virtual economies</li>
+                <li><strong>User Experience:</strong> Personalizing content, improving gameplay, technical support</li>
+                <li><strong>Analytics:</strong> Understanding user behavior, improving game balance, identifying popular features</li>
+                <li><strong>Security:</strong> Preventing fraud, detecting unauthorized access, enforcing terms of service</li>
+                <li><strong>Communication:</strong> Sending game-related notifications, updates, and promotional materials</li>
+                <li><strong>Legal Compliance:</strong> Meeting regulatory requirements, responding to legal requests</li>
+            </ul>
 
             <h2>3. Telegram Integration</h2>
-            <div class="placeholder">
-                📱 Here will be specific information about Telegram Bot API usage, user ID handling, and messaging permissions.
-            </div>
+            <p>Our game operates through the Telegram Bot API. We:</p>
+            <ul>
+                <li>Access only the information you choose to share with our bot</li>
+                <li>Do not read your private messages with other users</li>
+                <li>Cannot access your contacts or other Telegram data</li>
+                <li>May send you messages related to gameplay</li>
+                <li>Use Telegram's secure messaging infrastructure</li>
+            </ul>
 
             <h2>4. TON Wallet and Cryptocurrency</h2>
-            <div class="placeholder">
-                💎 Here will be information about TON wallet integration, transaction data, and cryptocurrency handling policies.
-            </div>
+            <p>For cryptocurrency features:</p>
+            <ul>
+                <li>We may collect wallet addresses for reward distribution</li>
+                <li>Transaction data is recorded on the TON blockchain (public ledger)</li>
+                <li>We do not store private keys or seed phrases</li>
+                <li>Cryptocurrency transactions are irreversible</li>
+                <li>We may track reward distribution for tax and legal compliance</li>
+            </ul>
 
-            <h2>5. Data Storage and Security</h2>
-            <div class="placeholder">
-                🔒 Here will be details about data encryption, storage location, security measures, and data protection protocols.
-            </div>
+            <h2>5. Data Sharing and Third Parties</h2>
+            <p>We may share your information with:</p>
+            <ul>
+                <li><strong>Service Providers:</strong> Cloud hosting, analytics, payment processing, customer support</li>
+                <li><strong>Analytics Services:</strong> Google Analytics, Telegram Analytics, custom analytics platforms</li>
+                <li><strong>Advertising Partners:</strong> For targeted advertising and performance measurement</li>
+                <li><strong>Legal Authorities:</strong> When required by law or to protect our rights</li>
+                <li><strong>Business Transfers:</strong> In case of merger, acquisition, or asset sale</li>
+            </ul>
+            <p>We do not sell personal information to third parties for their direct marketing purposes.</p>
 
-            <h2>6. Third-Party Services</h2>
-            <div class="placeholder">
-                🌐 Here will be information about analytics services, hosting providers, and other third-party integrations.
-            </div>
+            <h2>6. Data Storage and Security</h2>
+            <p>We implement appropriate security measures including:</p>
+            <ul>
+                <li>Encryption of sensitive data in transit and at rest</li>
+                <li>Regular security assessments and updates</li>
+                <li>Access controls and authentication systems</li>
+                <li>Secure cloud infrastructure</li>
+                <li>Regular backups and disaster recovery procedures</li>
+            </ul>
+            <p><strong>Data Retention:</strong> We retain your data for as long as your account is active or as needed to provide services. Game data may be retained longer for analytics and legal compliance.</p>
 
-            <h2>7. Your Rights (GDPR)</h2>
-            <div class="placeholder">
-                ⚖️ Here will be information about user rights under GDPR, data deletion, access requests, and EU compliance.
+            <h2>7. Your Rights Under GDPR</h2>
+            <div class="gdpr-box">
+                <h3>🇪🇺 European Union Users</h3>
+                <p>If you are located in the EU, you have the following rights:</p>
+                <ul>
+                    <li><strong>Access:</strong> Request copies of your personal data</li>
+                    <li><strong>Rectification:</strong> Request correction of inaccurate data</li>
+                    <li><strong>Erasure:</strong> Request deletion of your data ("right to be forgotten")</li>
+                    <li><strong>Portability:</strong> Request transfer of your data to another service</li>
+                    <li><strong>Restriction:</strong> Request limitation of data processing</li>
+                    <li><strong>Objection:</strong> Object to data processing for certain purposes</li>
+                    <li><strong>Withdraw Consent:</strong> Withdraw consent for data processing</li>
+                </ul>
+                <p>To exercise these rights, contact us at: <strong>feed.and.flap@gmail.com</strong></p>
             </div>
 
             <h2>8. Children's Privacy</h2>
-            <div class="placeholder">
-                👶 Here will be policies regarding users under 13/16 years old and parental consent requirements.
-            </div>
+            <p>Our game is intended for users 18 years and older. We do not knowingly collect personal information from anyone under 18. If we learn that we have collected information from someone under 18, we will delete that information immediately.</p>
 
-            <h2>9. Changes to This Policy</h2>
-            <div class="placeholder">
-                📝 Here will be information about how privacy policy updates are communicated to users.
-            </div>
+            <h2>9. International Data Transfers</h2>
+            <p>Your information may be transferred to and processed in countries other than your own. We ensure appropriate safeguards are in place for international transfers, including:</p>
+            <ul>
+                <li>Standard Contractual Clauses approved by the European Commission</li>
+                <li>Adequacy decisions by relevant authorities</li>
+                <li>Other legally approved transfer mechanisms</li>
+            </ul>
+
+            <h2>10. Advertising and Marketing</h2>
+            <p>We may display personalized advertisements based on your interests and game activity. You may:</p>
+            <ul>
+                <li>Opt out of personalized advertising</li>
+                <li>Request information about advertising data collection</li>
+                <li>Block our bot to stop receiving promotional messages</li>
+            </ul>
+
+            <h2>11. Cookies and Tracking</h2>
+            <p>We use cookies and similar technologies for:</p>
+            <ul>
+                <li>Session management and user authentication</li>
+                <li>Analytics and performance monitoring</li>
+                <li>Personalization and user preferences</li>
+                <li>Security and fraud prevention</li>
+            </ul>
+
+            <h2>12. Changes to This Policy</h2>
+            <p>We may update this Privacy Policy periodically. We will notify you of material changes through:</p>
+            <ul>
+                <li>In-game notifications</li>
+                <li>Messages through our Telegram bot</li>
+                <li>Updates on our website</li>
+            </ul>
+            <p>Your continued use of the game after changes indicates acceptance of the updated policy.</p>
+
+            <h2>13. Data Breach Notification</h2>
+            <p>In case of a data breach affecting personal information, we will:</p>
+            <ul>
+                <li>Notify relevant supervisory authorities within 72 hours (where required)</li>
+                <li>Inform affected users if the breach poses high risk</li>
+                <li>Take immediate steps to contain and remediate the breach</li>
+            </ul>
 
             <div class="contact-info">
                 <h3>Contact Information</h3>
-                <p>If you have any questions about this Privacy Policy, please contact us at:</p>
-                <p><strong>Email:</strong> privacy@feedandflap.com</p>
-                <p><strong>Data Protection Officer:</strong> dpo@feedandflap.com</p>
-                <p><strong>Telegram:</strong> @FeedAndFlapSupport</p>
+                <p>For privacy-related questions or requests, contact us at:</p>
+                <p><strong>General Privacy Inquiries:</strong> feed.and.flap@gmail.com</p>
+            
             </div>
         </div>
     </div>
 
     <div class="footer">
         <p>&copy; 2025 FEED & FLAP. All rights reserved.</p>
-        <p><a href="landing.html" style="color: #43b5e2;">Back to Main/a> | <a href="terms-of-service.html" style="color: #43b5e2;">Terms of Service</a></p>
+        <p><a href="landing.html">Back to Main</a> | <a href="terms-of-service.html">Terms of Service</a></p>
     </div>
 </body>
 </html>
